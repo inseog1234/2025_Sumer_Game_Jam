@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [System.Serializable]
@@ -24,18 +25,40 @@ public class Player : MonoBehaviour
 
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI NameTxt;
+    public TextMeshProUGUI CostTxt;
+
+    public Image[] DebufImage;
+    public TextMeshProUGUI[] DebufText;
 
     public Enemy[] enemies;
 
     void Start()
     {
         NameTxt.text = Name;
+        HPText.text = HP.ToString();
     }
 
 
     void Update()
     {
-        HPText.text = HP.ToString();
+        if (cost > Maxcost) cost = Maxcost;
+        CostTxt.text = cost.ToString();
+
+        // 디버프 UI 갱신
+        for (int i = 0; i < haveDebuf.Length && i < DebufImage.Length && i < DebufText.Length; i++)
+        {
+            if (haveDebuf[i].Accure > 0)
+            {
+                DebufImage[i].gameObject.SetActive(true);
+                DebufText[i].gameObject.SetActive(true);
+                DebufText[i].text = $"{haveDebuf[i].DebufName} x{haveDebuf[i].Accure}";
+            }
+            else
+            {
+                DebufImage[i].gameObject.SetActive(false);
+                DebufText[i].gameObject.SetActive(false);
+            }
+        }
     }
     public void AttackOneEnemy(float Damage, int selectEnemy)
     {
@@ -60,6 +83,11 @@ public class Player : MonoBehaviour
         else if(DEF == 0)
         {
             HP -= Damage;
+        }
+        HPText.text = HP.ToString();
+        if(HP <= 0)
+        {
+            Time.timeScale = 0;
         }
     }
 }
