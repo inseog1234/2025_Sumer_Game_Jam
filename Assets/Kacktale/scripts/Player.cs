@@ -126,19 +126,27 @@ public class Player : MonoBehaviour
             DEFText.text = $"{DEF}";
         }
     }
-    
+
     public void OnAttack(float Attack)
     {
 
         ATK += Attack;
-        
+
         if ((ATK - 1) <= 0)
         {
-            ATKText.text = "";
-        }
-        else
-        {
-            ATKText.text = $"+{ATK - 1}";
+
+            if ((ATK - 1) == 0)
+            {
+                ATKText.text = "";
+            }
+            if ((ATK - 1) > 0)
+            {
+                ATKText.text = $"+{ATK - 1}";
+            }
+            else
+            {
+                ATKText.text = $"{ATK - 1}";
+            }
         }
     }
 

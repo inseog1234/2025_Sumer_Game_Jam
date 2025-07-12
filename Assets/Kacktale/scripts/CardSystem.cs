@@ -381,7 +381,7 @@ public class CardSystem : MonoBehaviour
                         }
                         else
                         {
-                            player.OnDamage(player.HP + player.DEF);
+                            player.OnDamage(9999999999);
                         }
                         break;
                 }

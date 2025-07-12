@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Enemy : MonoBehaviour
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     public TextMeshProUGUI HpTxt;
     public TextMeshProUGUI NameSpace;
     public TextMeshProUGUI DEFTxt;
+    public TextMeshProUGUI ATKTxt;
     public GameObject Hit;
     public Light HitLight;
 
@@ -33,6 +35,9 @@ public class Enemy : MonoBehaviour
 
     public Animator Animator;
 
+    public List<Sprite> Act_IconS;
+    public Image Act_Icon;
+
     void Start()
     {
         // OnDamage(1);
@@ -42,7 +47,27 @@ public class Enemy : MonoBehaviour
     {
         DEFTxt.text = "";
         if (HP > MaxHP) HP = MaxHP;
-        if (DEF != 0) DEFTxt.text = $" + {DEF}";
+        if (DEF == 0) DEFTxt.text = $"";
+        else if (DEF > 0)
+        {
+            DEFTxt.text = $" + {DEF}";
+        }
+        else
+        {
+            DEFTxt.text = $" {DEF}";
+        }
+        
+        if ((ATK-1) == 0) ATKTxt.text = $"";
+        else if ((ATK-1) > 0)
+        {
+            ATKTxt.text = $" + {ATK-1}";
+        }
+        else
+        {
+            DEFTxt.text = $" {ATK-1}";
+        }
+        
+
         HpTxt.text = HP.ToString();
         NameSpace.text = Name;
     }
@@ -69,6 +94,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Set_Next_Act()
+    {
+        Act_Icon.sprite = Act_IconS[(int)NextAct];
     }
 
     void Die()
