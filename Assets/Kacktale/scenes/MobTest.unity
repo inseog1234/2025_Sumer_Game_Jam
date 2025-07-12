@@ -1185,6 +1185,7 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: e278a02054c969b4cb905ea65e8cdffb, type: 2}
   HPText: {fileID: 1742837967}
   Name: {fileID: 526986505}
+  enemies: []
 --- !u!1 &822560605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,8 +2129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   Enemys: {fileID: 11400000, guid: 36a01f465e7a7084ebb4a19b4bad8d1b, type: 2}
-  HpTxt: {fileID: 0}
-  NameSpace: {fileID: 0}
+  HpTxt: {fileID: 70192548}
+  NameSpace: {fileID: 302682804}
 --- !u!1 &1717190533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,8 +2231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   Enemys: {fileID: 11400000, guid: 36a01f465e7a7084ebb4a19b4bad8d1b, type: 2}
-  HpTxt: {fileID: 0}
-  NameSpace: {fileID: 0}
+  HpTxt: {fileID: 1510465270}
+  NameSpace: {fileID: 822560607}
 --- !u!1 &1742837965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,8 +2467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   Enemys: {fileID: 11400000, guid: 36a01f465e7a7084ebb4a19b4bad8d1b, type: 2}
-  HpTxt: {fileID: 0}
-  NameSpace: {fileID: 0}
+  HpTxt: {fileID: 789089391}
+  NameSpace: {fileID: 1404488102}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
