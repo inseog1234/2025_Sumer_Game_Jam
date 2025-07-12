@@ -58,20 +58,35 @@ public class Enemy : MonoBehaviour
         {
             DEFTxt.text = $" {DEF}";
         }
-        
-        if ((ATK-1) == 0) ATKTxt.text = $"";
-        else if ((ATK-1) > 0)
+
+        if ((ATK - 1) == 0) ATKTxt.text = $"";
+        else if ((ATK - 1) > 0)
         {
-            ATKTxt.text = $" + {ATK-1}";
+            ATKTxt.text = $" + {ATK - 1}";
         }
         else
         {
-            DEFTxt.text = $" {ATK-1}";
+            DEFTxt.text = $" {ATK - 1}";
         }
-        
 
         HpTxt.text = HP.ToString();
         NameSpace.text = Name;
+        
+        // Step 1: List로 변환
+            List<Enemy> validEnemies = new List<Enemy>();
+        foreach (var enemy in LeftEnemy)
+        {
+            if (enemy != null && enemy.gameObject.activeSelf)
+            {
+                validEnemies.Add(enemy);
+            }
+        }
+
+        // Step 2: 재배열
+        if (validEnemies.Count != LeftEnemy.Length)
+        {
+            LeftEnemy = validEnemies.ToArray();
+        }
     }
 
     public void OnDamage(float Damage)
@@ -109,11 +124,13 @@ public class Enemy : MonoBehaviour
 
         if (TurnManager.EnemyRemain.Contains(this))
         {
+
             TurnManager.EnemyRemain.Remove(this);
             TurnManager.EnemyTurnLeft = TurnManager.EnemyRemain.Count;
         }
 
-        gameObject.SetActive(false); 
+        // gameObject.SetActive(false); 
+        Destroy(gameObject);
     }
 
     IEnumerator HitEffect()
@@ -166,6 +183,7 @@ public class Enemy : MonoBehaviour
 
     public void StartTurn()
     {
+        ATK = 1;
         Debug.Log("적 행동 시작");
         switch (NextAct)
         {
@@ -338,30 +356,51 @@ public class Enemy : MonoBehaviour
         cam.ZoomToTarget(transform, cam.zoomedSize);
         yield return new WaitForSeconds(0.6f); // 살짝 딜레이
 
-        // Step 2: 버프 대상 선택
-        int chooseEnemy = Random.Range(0, LeftEnemy.Length);
-        Enemy targetEnemy = LeftEnemy[chooseEnemy];
-
-        // Step 3: 대상에게 카메라 이동
-        cam.ZoomToTarget(targetEnemy.transform, cam.zoomedSize);
-        yield return new WaitForSeconds(0.6f);
-
-        // Step 4: 버프 연출 및 적용
-        Debug.Log($"버프 → {targetEnemy.Name}");
-        int BuffType = Random.Range(0, 3);
-        switch (BuffType)
+        if (LeftEnemy.Length > 0)
         {
-            case 0:
-                targetEnemy.HP += 3;
-                GainHP.Play();
-                break;
-            case 1:
-                targetEnemy.DEF += 3;
-                GainDef.Play();
-                break;
-            case 2:
-                targetEnemy.ATK += 3;
-                break;
+            // Step 2: 버프 대상 선택
+            int chooseEnemy = Random.Range(0, LeftEnemy.Length);
+            Enemy targetEnemy = LeftEnemy[chooseEnemy];
+
+            // Step 3: 대상에게 카메라 이동
+            cam.ZoomToTarget(targetEnemy.transform, cam.zoomedSize);
+            yield return new WaitForSeconds(0.6f);
+
+            // Step 4: 버프 연출 및 적용
+            Debug.Log($"버프 → {targetEnemy.Name}");
+            int BuffType = Random.Range(0, 3);
+            switch (BuffType)
+            {
+                case 0:
+                    targetEnemy.HP += 3;
+                    GainHP.Play();
+                    break;
+                case 1:
+                    targetEnemy.DEF += 3;
+                    GainDef.Play();
+                    break;
+                case 2:
+                    targetEnemy.ATK += 3;
+                    break;
+            }
+        }
+        else
+        {
+            int BuffType = Random.Range(0, 3);
+            switch (BuffType)
+            {
+                case 0:
+                    HP += 3;
+                    GainHP.Play();
+                    break;
+                case 1:
+                    DEF += 3;
+                    GainDef.Play();
+                    break;
+                case 2:
+                    ATK += 3;
+                    break;
+            }
         }
 
         // Step 5: 카메라 줌아웃 및 마무리

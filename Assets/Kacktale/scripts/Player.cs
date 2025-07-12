@@ -131,24 +131,19 @@ public class Player : MonoBehaviour
 
     public void OnAttack(float Attack)
     {
-
         ATK += Attack;
 
-        if (ATK-1 <= 0)
+        if (ATK-1 == 0)
         {
-
-            if (ATK-1 == 0)
-            {
-                ATKText.text = "";
-            }
-            if (ATK-1 > 0)
-            {
-                ATKText.text = $"+{ATK - 1}";
-            }
-            else
-            {
-                ATKText.text = $"{ATK - 1}";
-            }
+            ATKText.text = $"";
+        }
+        else if (ATK-1 > 0)
+        {
+            ATKText.text = $"+{ATK - 1}";
+        }
+        else
+        {
+            ATKText.text = $"{ATK - 1}";
         }
     }
 
@@ -166,7 +161,7 @@ public class Player : MonoBehaviour
         {
             HP = 0;
             HPText.text = HP.ToString();
-            Time.timeScale = 0;
+            StartCoroutine(DieSequence());
         }
         else
         {
