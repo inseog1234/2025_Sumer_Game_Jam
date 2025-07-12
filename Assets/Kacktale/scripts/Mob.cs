@@ -34,6 +34,7 @@ public class Debuf
     public float Accure;
 }
 
+
 [CreateAssetMenu(fileName ="Mobs",menuName ="Phaze/Mobs",order =1)]
 public class Mobs : ScriptableObject
 {
