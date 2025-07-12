@@ -13,26 +13,25 @@ MonoBehaviour:
   m_Name: DefenceTag
   m_EditorClassIdentifier: Assembly-CSharp::HaveCard
   CardType:
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uB3C4 \uB2E4\uCE60\uC21C \uC5C6\uC73C\uB2C8\uAE4C"
+  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD53C\uB97C \uBCF4\uC544\uC120 \uC548\uB3FC"
     cardName: 1
     accureStat: 2
     IsRandom: 0
     MinAttack: 0
     MaxAttack: 0
     cost: 0
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD56D\uC0C1 \uBC34\uB4DC\uB97C \uCC28\uACE0
+  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD56D\uC0C1 \uAC11\uC637\uC744 \uCC28\uACE0
       \uB2E4\uB2C8\uC9C0"
     cardName: 1
     accureStat: 0
-    IsRandom: 0
-    MinAttack: -1
-    MaxAttack: 4
+    IsRandom: 1
+    MinAttack: 1
+    MaxAttack: 7
     cost: 1
-  - Name: "\uC544\uD508\uAC74 \uC2EB\uC73C\uB2C8 \uAC11\uC637 \uB9C8\uBC95\uC18C\uB140\uAC00
-      \uB418\uACA0\uC2B5\uB2C8\uB2E4."
+  - Name: "\uC544\uD508\uAC74 \uC2EB\uC73C\uB2C8 \uB9C8\uBC95\uC18C\uB140\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
     cardName: 1
-    accureStat: 10
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
+    accureStat: 0
+    IsRandom: 1
+    MinAttack: -10
+    MaxAttack: 20
     cost: 2
