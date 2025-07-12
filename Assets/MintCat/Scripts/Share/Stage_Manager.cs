@@ -17,7 +17,7 @@ public class Stage_Manager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }
+        } 
     }
 
     public void GameStart(int Stage)
@@ -28,6 +28,6 @@ public class Stage_Manager : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 }
