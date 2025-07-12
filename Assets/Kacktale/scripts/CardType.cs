@@ -7,13 +7,15 @@ using UnityEngine;
 public class HaveCard
 {
     public string Name;
-    public enum card { Attack,Defence,Heal,Buff,Gatcha};
+    public string Description;
+    public enum card { Attack, Defence, Heal, Buff, Gatcha };
     public card cardName;
     public float accureStat;
     public bool IsRandom;
     public int MinAttack;
     public int MaxAttack;
     public int cost;
+    
 }
 public class CardType : MonoBehaviour
 {

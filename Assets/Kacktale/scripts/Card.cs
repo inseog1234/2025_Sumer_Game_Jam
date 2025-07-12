@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] List<Sprite> Card_Sprite = new List<Sprite>();
     public RectTransform rectTransform;
     private bool isSelected = false;
     public HaveCard cardType;
@@ -12,14 +15,36 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private CardSystem cardSystem;
     public LayoutElement layout;
 
+    private Image OBJ_IMG;
+    [SerializeField] private TextMeshProUGUI Name_Txt;
+    [SerializeField] private TextMeshProUGUI Description_Txt;
+    [SerializeField] private TextMeshProUGUI Cost_Txt;
     public int originalSiblingIndex;
     public bool isHovered { get; private set; }
     public int CardNum;
+
+    public bool Clicked;
+
+    
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         cardSystem = FindObjectOfType<CardSystem>();
+        OBJ_IMG = GetComponent<Image>();
+    }
+    public void Set_Sprite(int _Type, string Name, string Description, int _Cost)
+    {
+        Type = _Type;
+
+        OBJ_IMG.sprite = Card_Sprite[Type];
+        Name_Txt.text = Name;
+        Description_Txt.text = Description;
+        Cost_Txt.text = $"{_Cost}";
+    }
+    public void Set_Target(Enemy enemy)
+    {
+        cardSystem.Target = enemy;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -32,8 +57,16 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointStay()
     {
-        rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
-        rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime);
+        if (cardSystem.Stop && Clicked)
+        {
+            rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
+            rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime);
+        }
+        else if (!cardSystem.Stop)
+        {
+            rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
+            rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime); 
+        }
 
     }
 
@@ -49,11 +82,20 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        StartCoroutine(SelectCard());
+        if (Type == 0 && cardSystem.Target)
+        {
+            StartCoroutine(SelectCard());
+        }
+        else if (Type != 0)
+        {
+            StartCoroutine(SelectCard());
+        }
     }
 
     IEnumerator SelectCard()
     {
+        cardSystem.Stop = true;
+        Clicked = true;
         rectTransform.anchoredPosition3D = new Vector3(960, 330);
         rectTransform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
         rectTransform.rotation = Quaternion.Euler(0, 0, 0);
@@ -63,6 +105,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         cardSystem.Card_Sc.Remove(this);
         cardSystem.RotateCard();
         Destroy(gameObject, 0.01f);
+        Clicked = false;
+        cardSystem.Stop = false;
     }
 
     void Update()
@@ -71,5 +115,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             OnPointStay();
         }
+
+        
     }
 }
