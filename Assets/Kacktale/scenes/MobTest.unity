@@ -7435,6 +7435,7 @@ GameObject:
   - component: {fileID: 1158824528}
   - component: {fileID: 1158824527}
   - component: {fileID: 1158824526}
+  - component: {fileID: 1158824529}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7516,6 +7517,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158824529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158824525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4573425a0f741734da284be3ce83f217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 1158824527}
+  defaultSize: 5
+  zoomedSize: 4
+  zoomSpeed: 5
+  moveSpeed: 5
 --- !u!1 &1196236618
 GameObject:
   m_ObjectHideFlags: 0
@@ -8733,6 +8751,7 @@ MonoBehaviour:
   - {fileID: 1717190536}
   - {fileID: 1791051115}
   TurnManager: {fileID: 2118647073}
+  cam: {fileID: 1158824529}
 --- !u!70 &1597818373
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -9065,6 +9084,7 @@ MonoBehaviour:
   - {fileID: 1791051115}
   - {fileID: 1597818372}
   TurnManager: {fileID: 2118647073}
+  cam: {fileID: 1158824529}
 --- !u!70 &1717190537
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -9360,6 +9380,7 @@ MonoBehaviour:
   - {fileID: 1717190536}
   - {fileID: 1597818372}
   TurnManager: {fileID: 2118647073}
+  cam: {fileID: 1158824529}
 --- !u!70 &1791051116
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
