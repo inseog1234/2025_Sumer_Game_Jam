@@ -52,6 +52,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (cardSystem.Stop) return;
         if (!turnManager.IsPlayerTurn) return;
         if (isSelected) return;
 
@@ -62,7 +63,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointStay()
     {
         if (!turnManager.IsPlayerTurn) return;
-        
+
         if (cardSystem.Stop && Clicked)
         {
             rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
@@ -89,6 +90,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (cardSystem.Stop) return;
         if (!turnManager.IsPlayerTurn) return;
 
         if (Type == 0 && cardSystem.Target)
