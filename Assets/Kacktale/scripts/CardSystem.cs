@@ -13,7 +13,13 @@ public class CardSystem : MonoBehaviour
     public GameObject Canvas;
     
     public HorizontalLayoutGroup CanvasGroup;
-    
+
+    public HaveCard AttackType;
+    public HaveCard DefType;
+    public HaveCard HealType;
+    public HaveCard BuffType;
+    public HaveCard GatchaType;
+
     // public void RotateCard()
     // {
     //     //보유 카드 3개 , 5
@@ -42,10 +48,40 @@ public class CardSystem : MonoBehaviour
     public void CreateCard()
     {
         GameObject newCard = Instantiate(CardPrefab,transform.position,Quaternion.identity, Canvas.transform);
+        Card cardComp = newCard.GetComponent<Card>();
         // Card.Add(newCard);
         // if(Card.Count == 0) PickUpCard();
+        CardDetail(cardComp);
     }
-    
+
+    void CardDetail(Card cardComp)
+    {
+        int a = Random.Range(0, 5);
+        switch (a)
+        {
+            case 0:
+                int AttackCardChoose = Random.Range(0, AttackType.CardType.Length);
+                cardComp.cardType = AttackType.CardType[AttackCardChoose];
+            break;
+            case 1:
+                int DefCardChoose = Random.Range(0, DefType.CardType.Length);
+                cardComp.cardType = DefType.CardType[DefCardChoose];
+            break;
+            case 2:
+                int HealCardChoose = Random.Range(0, HealType.CardType.Length);
+                cardComp.cardType = HealType.CardType[HealCardChoose];
+                break;
+            case 3:
+                int BuffCardChoose = Random.Range(0, BuffType.CardType.Length);
+                cardComp.cardType = BuffType.CardType[BuffCardChoose];
+            break;
+            case 4:
+                int GatchaCardChoose = Random.Range(0, GatchaType.CardType.Length);
+                cardComp.cardType= GatchaType.CardType[GatchaCardChoose];
+            break;
+        }
+    }
+
     // public void PickUpCard()
     // {
     //     Card[cardNum -1].transform.rotation = Quaternion.Euler(0, 0, 15 * cardNum);

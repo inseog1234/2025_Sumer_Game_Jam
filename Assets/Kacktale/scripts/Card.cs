@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
 {
     private bool isSelected = false;
-    public RectTransform rectTransform; 
+    public RectTransform rectTransform;
+    public CardType cardType;
+    public int Type;
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(!isSelected) rectTransform.anchoredPosition3D += new Vector3(0,300);
