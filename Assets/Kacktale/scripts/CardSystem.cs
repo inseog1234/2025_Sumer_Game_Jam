@@ -104,7 +104,6 @@ public class CardSystem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                player.animator.Play("Player_PreAttack");
                 Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero, Mathf.Infinity, enemyLayer);
 
@@ -115,6 +114,7 @@ public class CardSystem : MonoBehaviour
                     {
                         Target = enemy;
                         Debug.Log("2D Target locked: " + Target.name);
+                        player.animator.Play("Player_PreAttack");
                     }
                     else
                     {
