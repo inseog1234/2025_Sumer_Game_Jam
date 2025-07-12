@@ -22,6 +22,8 @@ public class CardSystem : MonoBehaviour
     public CardType BuffType;
     public CardType GatchaType;
 
+    public TurnManager TurnManager;
+
     private float MAX_ANGLE = 20f;
 
     private bool isHovered = false;
@@ -140,6 +142,7 @@ public class CardSystem : MonoBehaviour
         Card card_ = newCard.GetComponent<Card>();
         Card_Sc.Add(card_);
         card_.CardNum = Card.IndexOf(newCard);
+        card_.turnManager = TurnManager;
         RotateCard();
         CardDetail(card_);
     }

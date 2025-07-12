@@ -15,6 +15,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int originalSiblingIndex;
     public bool isHovered { get; private set; }
     public int CardNum;
+    public TurnManager turnManager;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!turnManager.IsPlayerTurn) return;
         if (isSelected) return;
 
         cardSystem.HoverEnter();
@@ -32,6 +34,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointStay()
     {
+        if (!turnManager.IsPlayerTurn) return;
         rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
         rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime);
 
@@ -40,6 +43,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerExit(PointerEventData eventData)
     {
         if (isSelected) return;
+        if (!turnManager.IsPlayerTurn) return;
 
         cardSystem.HoverExit();
 
@@ -49,6 +53,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!turnManager.IsPlayerTurn) return;
         StartCoroutine(SelectCard());
     }
 
