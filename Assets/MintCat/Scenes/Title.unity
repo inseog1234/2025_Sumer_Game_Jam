@@ -487,11 +487,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a96e771205d3b44685db5f2e2af738f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Logo_1: {fileID: 0}
-  Logo_2: {fileID: 0}
-  Start: {fileID: 0}
-  Quit: {fileID: 0}
-  Setting: {fileID: 0}
+  Logo_1: {fileID: 1075801215}
+  Logo_2: {fileID: 939268569}
+  Start: {fileID: 883047413}
+  Quit: {fileID: 1521091946}
+  Setting: {fileID: 1882715728}
 --- !u!1 &1075801215
 GameObject:
   m_ObjectHideFlags: 0
