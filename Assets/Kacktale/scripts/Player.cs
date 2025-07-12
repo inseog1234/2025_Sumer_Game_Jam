@@ -26,13 +26,13 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI NameTxt;
 
     public Enemy[] enemies;
-    // Start is called before the first frame update
+
     void Start()
     {
         NameTxt.text = Name;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         HPText.text = HP.ToString();
