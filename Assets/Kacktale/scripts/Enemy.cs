@@ -197,7 +197,14 @@ public class Enemy : MonoBehaviour
                 StartCoroutine (SupportAnim());
                 break;
         }
-        NextAct = (EnemyNextAct)Random.Range(0, 3);
+        if(LeftEnemy.Length != 0)
+        {
+            NextAct = (EnemyNextAct)Random.Range(0, 3);
+        }
+        else
+        {
+            NextAct = (EnemyNextAct)Random.Range(0, 2);
+        }
     }
 
     IEnumerator AttackAnim()
