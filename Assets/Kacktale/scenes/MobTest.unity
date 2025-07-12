@@ -1362,10 +1362,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4e05ea23e411f40a351ab7d9d89869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: e278a02054c969b4cb905ea65e8cdffb, type: 2}
+  Name: "\uB9C8\uBC95\uC18C\uB140 \uCE74\uC640\uC774 \uB7EC\uBE14\uB9AC \uC988\uD065\uB3C4\uD065
+    \uBC14\uD065\uBD80\uD065 \uB8E8\uB8E8\uD551"
+  HP: 30
+  MaxHP: 30
+  ATK: 1
+  DEF: 0
+  cost: 10
+  Maxcost: 10
+  haveDebuf:
+  - DebufName: "\uCD9C\uD608"
+    Accure: 0
+  - DebufName: "\uC18D\uBC15"
+    Accure: 0
+  - DebufName: "\uACE8\uC808"
+    Accure: 0
+  - DebufName: "\uC9C4\uD0D5"
+    Accure: 0
   HPText: {fileID: 1742837967}
-  Name: {fileID: 526986505}
-  enemies: []
+  NameTxt: {fileID: 526986505}
+  enemies:
+  - {fileID: 1717190536}
+  - {fileID: 1791051115}
+  - {fileID: 1597818372}
 --- !u!1 &822560605
 GameObject:
   m_ObjectHideFlags: 0
