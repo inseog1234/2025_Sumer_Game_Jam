@@ -134,26 +134,36 @@ public class CardSystem : MonoBehaviour
             case 0:
                 int AttackCardChoose = Random.Range(0, AttackType.haveCards.Length);
                 cardComp.cardType = AttackType.haveCards[AttackCardChoose];
+                cardComp.Card_Type_A = 0;
+                cardComp.Card_Type_B = AttackCardChoose;
                 cardComp.Set_Sprite(0, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 1:
                 int DefCardChoose = Random.Range(0, DefType.haveCards.Length);
                 cardComp.cardType = DefType.haveCards[DefCardChoose];
+                cardComp.Card_Type_A = 1;
+                cardComp.Card_Type_B = DefCardChoose;
                 cardComp.Set_Sprite(1, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 2:
                 int HealCardChoose = Random.Range(0, HealType.haveCards.Length);
                 cardComp.cardType = HealType.haveCards[HealCardChoose];
+                cardComp.Card_Type_A = 2;
+                cardComp.Card_Type_B = HealCardChoose;
                 cardComp.Set_Sprite(2, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 3:
                 int BuffCardChoose = Random.Range(0, BuffType.haveCards.Length);
                 cardComp.cardType = BuffType.haveCards[BuffCardChoose];
+                cardComp.Card_Type_A = 3;
+                cardComp.Card_Type_B = BuffCardChoose;
                 cardComp.Set_Sprite(3, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 4:
                 int GatchaCardChoose = Random.Range(0, GatchaType.haveCards.Length);
                 cardComp.cardType = GatchaType.haveCards[GatchaCardChoose];
+                cardComp.Card_Type_A = 4;
+                cardComp.Card_Type_B = GatchaCardChoose;
                 cardComp.Set_Sprite(4, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
         }
@@ -202,8 +212,10 @@ public class CardSystem : MonoBehaviour
         }
     }
 
-    void Card_Stat_Apply(int Cade_Type_A, int Cade_Type_B, HaveCard Type_Card)
+    public void Card_Stat_Apply(int Cade_Type_A, int Cade_Type_B, HaveCard Type_Card)
     {
+        Debug.Log($"{Cade_Type_A}, {Cade_Type_B}, {Type_Card}");
+        player.cost -= Type_Card.cost;
         switch (Cade_Type_A)
         {
             case 0:
@@ -214,18 +226,18 @@ public class CardSystem : MonoBehaviour
                         break;
 
                     case 1:
-                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
                         break;
 
                     case 2:
-                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
                         break;
 
                     case 3:
                         int RanNum = Random.Range(0, 2);
-                        if (RanNum == 0) 
+                        if (RanNum == 0)
                             Target.HP -= Type_Card.MinAttack;
-                        else 
+                        else
                             Target.HP -= Type_Card.MaxAttack;
                         break;
 
@@ -245,18 +257,18 @@ public class CardSystem : MonoBehaviour
 
                     case 1:
                         int RanNum = Random.Range(0, 2);
-                        if (RanNum == 0) 
+                        if (RanNum == 0)
                             player.DEF += Type_Card.MinAttack;
-                        else 
+                        else
                             player.DEF += Type_Card.MaxAttack;
                         break;
 
                     case 2:
-                        player.DEF += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        player.DEF += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
                         break;
                 }
                 break;
-                
+
             case 2:
                 switch (Cade_Type_B)
                 {
@@ -266,19 +278,19 @@ public class CardSystem : MonoBehaviour
                         break;
 
                     case 1:
-                        player.HP += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        player.HP += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
                         break;
 
                     case 2:
                         int RanNum = Random.Range(0, 2);
-                        if (RanNum == 0) 
+                        if (RanNum == 0)
                             player.HP += Type_Card.MinAttack;
-                        else 
+                        else
                             player.HP += Type_Card.MaxAttack;
                         break;
                 }
                 break;
-                
+
             case 3:
                 switch (Cade_Type_B)
                 {
@@ -288,14 +300,14 @@ public class CardSystem : MonoBehaviour
 
                     case 1:
                         int RanNum = Random.Range(0, 2);
-                        if (RanNum == 0) 
+                        if (RanNum == 0)
                             player.ATK += Type_Card.MinAttack;
-                        else 
+                        else
                             player.ATK += Type_Card.MaxAttack;
                         break;
                 }
                 break;
-                
+
             case 4:
                 switch (Cade_Type_B)
                 {
@@ -317,18 +329,25 @@ public class CardSystem : MonoBehaviour
                     case 2:
                         RanNum = Random.Range(0, 101);
                         if (RanNum <= 30)
+                        {
                             player.cost += 3;
                             player.cost += TurnManager.PlusCost;
 
+                            ClearCard();
+
                             for (int i = 0; i < 5; i++)
-                        {
-                            CreateCard();
+                            {
+                                CreateCard();
+                            }
                         }
+
+
                         break;
 
                     case 3:
                         RanNum = Random.Range(0, 101);
-                        if (RanNum <= 50) {
+                        if (RanNum <= 50)
+                        {
                             player.HP *= 2;
                             TurnManager.PlusCost += 1;
                         }

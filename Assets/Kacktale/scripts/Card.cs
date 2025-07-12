@@ -19,6 +19,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private TextMeshProUGUI Name_Txt;
     [SerializeField] private TextMeshProUGUI Description_Txt;
     [SerializeField] private TextMeshProUGUI Cost_Txt;
+
+    public int Card_Type_A;
+    public int Card_Type_B;
+
     public int originalSiblingIndex;
     public bool isHovered { get; private set; }
     public int CardNum;
@@ -111,6 +115,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         cardSystem.Card_Sc.Remove(this);
         cardSystem.RotateCard();
         Destroy(gameObject, 0.01f);
+        cardSystem.Card_Stat_Apply(Card_Type_A, Card_Type_B, cardType);
         Clicked = false;
         cardSystem.Stop = false;
     }
