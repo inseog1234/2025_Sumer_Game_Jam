@@ -104,6 +104,7 @@ public class CardSystem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                player.animator.Play("Player_PreAttack");
                 Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero, Mathf.Infinity, enemyLayer);
 
@@ -230,6 +231,7 @@ public class CardSystem : MonoBehaviour
         switch (Cade_Type_A)
         {
             case 0:
+                player.animator.Play("Player_Attack");
                 switch (Cade_Type_B)
                 {
                     case 0:
@@ -255,6 +257,19 @@ public class CardSystem : MonoBehaviour
                     case 4:
                         Target.OnDamage(Type_Card.accureStat + (player.ATK -1));
                         break;
+                }
+
+                if (player.haveDebuf[0].Accure > 0)
+                {
+                    if (player.haveDebuf[0].Accure % 2 == 0)
+                    {
+                        
+                    }
+                    else
+                    {
+                        
+                    }
+                    
                 }
                 break;
 

@@ -48,6 +48,7 @@ public class TurnManager : MonoBehaviour
             cardSystem.CreateCard();
         }
     }
+    
     public void EnemyTurn()
     {
         if (IsPlayerTurn)
