@@ -8151,8 +8151,20 @@ MonoBehaviour:
   Hit: {fileID: 1968693900}
   HitLight: {fileID: 493008232}
   player: {fileID: 821746230}
-  haveDebuf: []
-  DebufEnable: 
+  haveDebuf:
+  - DebufName: "\uCD9C\uD608"
+    Accure: 2
+  - DebufName: "\uC18D\uBC15"
+    Accure: 1
+  - DebufName: "\uACE8\uC808"
+    Accure: 1
+  - DebufName: "\uC9C4\uD0D5"
+    Accure: 1
+  DebufEnable: 01010000
+  LeftEnemy:
+  - {fileID: 1717190536}
+  - {fileID: 1791051115}
+  TurnManager: {fileID: 2118647073}
 --- !u!1 &1716938129
 GameObject:
   m_ObjectHideFlags: 0
@@ -8367,6 +8379,10 @@ MonoBehaviour:
   - DebufName: "\uC9C4\uD0D5"
     Accure: 1
   DebufEnable: 01010000
+  LeftEnemy:
+  - {fileID: 1791051115}
+  - {fileID: 1597818372}
+  TurnManager: {fileID: 2118647073}
 --- !u!1 &1742837965
 GameObject:
   m_ObjectHideFlags: 0
@@ -8611,8 +8627,20 @@ MonoBehaviour:
   Hit: {fileID: 1196236618}
   HitLight: {fileID: 1716938131}
   player: {fileID: 821746230}
-  haveDebuf: []
-  DebufEnable: 
+  haveDebuf:
+  - DebufName: "\uCD9C\uD608"
+    Accure: 2
+  - DebufName: "\uC18D\uBC15"
+    Accure: 1
+  - DebufName: "\uACE8\uC808"
+    Accure: 1
+  - DebufName: "\uC9C4\uD0D5"
+    Accure: 1
+  DebufEnable: 01010000
+  LeftEnemy:
+  - {fileID: 1717190536}
+  - {fileID: 1597818372}
+  TurnManager: {fileID: 2118647073}
 --- !u!1 &1941163070
 GameObject:
   m_ObjectHideFlags: 0
@@ -8810,8 +8838,12 @@ MonoBehaviour:
   giveCard: 5
   cardSystem: {fileID: 431580076}
   player: {fileID: 821746230}
-  EnemyRemain: 3
+  EnemyRemain:
+  - {fileID: 1717190536}
+  - {fileID: 1791051115}
+  - {fileID: 1597818372}
   EnemyTurnLeft: 0
+  EnemyAct: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

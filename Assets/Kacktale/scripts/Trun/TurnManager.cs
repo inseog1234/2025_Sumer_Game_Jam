@@ -14,6 +14,7 @@ public class TurnManager : MonoBehaviour
 
     public Enemy[] EnemyRemain;
     public int EnemyTurnLeft;
+    public bool EnemyAct = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,10 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!IsPlayerTurn && EnemyTurnLeft <= 0)
-        {
-            PlayerTrun();
-        }
+
     }
 
-    void PlayerTrun()
+    public void PlayerTrun()
     {
         IsPlayerTurn = true;
         player.cost += giveCost + PlusCost;
@@ -45,7 +43,14 @@ public class TurnManager : MonoBehaviour
         {
             IsPlayerTurn = false;
             EnemyTurnLeft = EnemyRemain.Length;
-            EnemyRemain[0].StartTurn();
+            EnemyRemain[EnemyTurnLeft -1].StartTurn();
+            EnemyTurnLeft--;
         }
+    }
+    public void NextEnemyTurn()
+    {
+        EnemyAct = true;
+        EnemyRemain[EnemyTurnLeft -1].StartTurn();
+        EnemyTurnLeft--;
     }
 }

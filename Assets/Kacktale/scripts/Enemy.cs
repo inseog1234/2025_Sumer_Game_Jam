@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
 
     public Debuf[] haveDebuf;
     public List<bool> DebufEnable;
+    public Enemy[] LeftEnemy;
+    public TurnManager TurnManager;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if(HP > MaxHP) HP = MaxHP;
         HpTxt.text = HP.ToString();
         NameSpace.text = Name;
     }
@@ -99,16 +102,17 @@ public class Enemy : MonoBehaviour
 
     public void StartTurn()
     {
+        Debug.Log("적 행동 시작");
         switch (NextAct)
         {
             case EnemyNextAct.Attack:
-                Attack();
+                Invoke("Attack",1f);
                 break;
             case EnemyNextAct.SpecialAttack:
-                SpecialAttack();
+                Invoke("SpecialAttack", 1f);
                 break;
             case EnemyNextAct.Support:
-                Support();
+                Invoke("Support", 1f);
                 break;
         }
         NextAct = (EnemyNextAct)Random.Range(0, 3);
@@ -183,16 +187,106 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
-
+        TurnManager.EnemyAct = false;
+        if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
+        else TurnManager.NextEnemyTurn();
     }
     void SpecialAttack()
     {
+        Debug.Log("적 특별 공격 시작");
+        bool randomAttack = Random.value > 0.5f;
+        if (!randomAttack)
+        {
+            player.OnDamage(ATK * 2);
+            Debug.Log("적 공격");
+        }
+        else
+        {
+            Debug.Log("적 랜덤 공격");
+            int Damage = Random.Range(1, 4);
+            player.OnDamage(ATK * Damage * 2);
+        }
+        bool canDebuf = Random.value > 0.5f;
+        if (canDebuf)
+        {
+            Debug.Log("적 디버프");
 
+            List<int> enabledDebufs = new List<int>();
+            for (int i = 0; i < DebufEnable.Count; i++)
+            {
+                if (DebufEnable[i])
+                    enabledDebufs.Add(i);
+            }
+
+            if (enabledDebufs.Count >= 1)
+            {
+                int selectedIndex = enabledDebufs[0];
+
+                if (enabledDebufs.Count == 1)
+                {
+                    selectedIndex = enabledDebufs[0];
+                    Debug.Log("디버프 하나뿐이라 그것만 적용");
+                }
+                else if (enabledDebufs.Count == 2)
+                {
+                    float rand = Random.value;
+                    selectedIndex = (rand < 0.1f) ? enabledDebufs[1] : enabledDebufs[0];
+                    Debug.Log($"2개 중 선택된 디버프: {selectedIndex}");
+                }
+                else
+                {
+                    int secondIndex = enabledDebufs[1];
+                    List<int> rest = new List<int>(enabledDebufs);
+                    rest.RemoveAt(1);
+
+                    float rand = Random.value;
+                    if (rand < 0.1f)
+                    {
+                        selectedIndex = secondIndex;
+                        Debug.Log("10% 확률로 두 번째 디버프 선택됨");
+                    }
+                    else
+                    {
+                        int pick = Random.Range(0, rest.Count);
+                        selectedIndex = rest[pick];
+                        Debug.Log($"90% 중 나머지에서 선택된 디버프: {selectedIndex}");
+                    }
+                }
+
+                if (selectedIndex < haveDebuf.Length && selectedIndex < player.haveDebuf.Length)
+                {
+                    player.haveDebuf[selectedIndex].Accure += haveDebuf[selectedIndex].Accure;
+                    Debug.Log($"플레이어에게 디버프 {selectedIndex} 적용됨");
+                }
+            }
+        }
+
+        int Heal = Random.Range(1, 3);
+        HP += Heal;
+        TurnManager.EnemyAct = false;
+        if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
+        else TurnManager.NextEnemyTurn();
     }
 
     void Support()
     {
-
+        Debug.Log("버프");
+        int chooseEnemy = Random.Range(0, LeftEnemy.Length);
+        int BuffType = Random.Range(0,3);
+        switch( BuffType )
+        {
+            case 0:
+                LeftEnemy[chooseEnemy].HP += 3;
+            break;
+            case 1:
+                LeftEnemy[chooseEnemy].DEF += 3;
+            break;
+            case 2:
+                LeftEnemy[chooseEnemy].ATK += 3;
+            break;
+        }
+        TurnManager.EnemyAct = false;
+        if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
+        else TurnManager.NextEnemyTurn();
     }
 }
