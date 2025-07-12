@@ -27,6 +27,9 @@ public class Enemy : MonoBehaviour
     public Enemy[] LeftEnemy;
     public TurnManager TurnManager;
 
+    public CameraController cam; // 인스펙터에 할당
+    private Vector3 originalCamPos;
+
     void Start()
     {
         OnDamage(1);
@@ -127,38 +130,105 @@ public class Enemy : MonoBehaviour
         switch (NextAct)
         {
             case EnemyNextAct.Attack:
-                Invoke("Attack",1f);
+                StartCoroutine(AttackAnim());
                 break;
             case EnemyNextAct.SpecialAttack:
-                Invoke("SpecialAttack", 1f);
+                StartCoroutine(SpecialAttackAnim());
                 break;
             case EnemyNextAct.Support:
-                Invoke("Support", 1f);
+                StartCoroutine (SupportAnim());
                 break;
         }
         NextAct = (EnemyNextAct)Random.Range(0, 3);
     }
 
-    void Attack()
+    IEnumerator AttackAnim()
     {
-        Debug.Log("적 공격 시작");
-        bool randomAttack = Random.value > 0.5f;
-        if (!randomAttack)
-        {
-            player.OnDamage(ATK);
-            Debug.Log("적 공격");
-        }
-        else
-        {
-            Debug.Log("적 랜덤 공격");
-            int Damage = Random.Range(1, 4);
-            player.OnDamage(ATK * Damage);
-        }
-        bool canDebuf = Random.value > 0.5f;
-        if (canDebuf)
-        {
-            Debug.Log("적 디버프");
+        yield return new WaitForSeconds(0.3f);
 
+        // 카메라 줌인 + 적에게 포커스
+        originalCamPos = cam.transform.position;
+        cam.ZoomToTarget(transform, cam.zoomedSize);
+
+        Vector3 origin = transform.position;
+        Vector3 target = player.transform.position - Vector3.left * 4f;
+
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            if (TurnManager.isBattleEnded) yield break;
+            transform.position = Vector3.Lerp(origin, target, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = target;
+
+        yield return new WaitForSeconds(0.5f);
+
+        // 공격 처리
+        bool randomAttack = Random.value > 0.5f;
+        float damage = randomAttack ? ATK * Random.Range(1, 4) : ATK;
+        player.OnDamage(damage);
+
+        // 디버프 처리 (생략 가능)
+
+        // 복귀
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            if (TurnManager.isBattleEnded) yield break;
+            transform.position = Vector3.Lerp(target, origin, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = origin;
+
+        yield return new WaitForSeconds(0.3f);
+
+        // 카메라 줌아웃 + 원위치 복귀
+        cam.ResetZoom(Vector3.zero);
+
+        yield return new WaitForSeconds(0.3f);
+
+        TurnManager.EnemyAct = false;
+        if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
+        else TurnManager.NextEnemyTurn();
+    }
+
+    IEnumerator SpecialAttackAnim()
+    {
+        yield return new WaitForSeconds(0.3f); // 시작 전 딜레이
+
+        originalCamPos = cam.transform.position;
+        cam.ZoomToTarget(transform, cam.zoomedSize);
+        Vector3 origin = transform.position;
+        Vector3 target = player.transform.position - (Vector3.left * 4f);
+
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            if (TurnManager.isBattleEnded) yield break;
+            transform.position = Vector3.Lerp(origin, target, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = target;
+
+        yield return new WaitForSeconds(0.5f);
+
+        // 데미지 계산
+        bool randomAttack = Random.value > 0.5f;
+        float damage = randomAttack ? ATK * Random.Range(1, 4) * 2 : ATK * 2;
+        player.OnDamage(damage);
+        Debug.Log("특수 공격 데미지 적용");
+
+        // 디버프 처리
+        if (Random.value > 0.5f)
+        {
             List<int> enabledDebufs = new List<int>();
             for (int i = 0; i < DebufEnable.Count; i++)
             {
@@ -169,145 +239,89 @@ public class Enemy : MonoBehaviour
             if (enabledDebufs.Count >= 1)
             {
                 int selectedIndex = enabledDebufs[0];
-
-                if (enabledDebufs.Count == 1)
+                if (enabledDebufs.Count == 2)
+                    selectedIndex = (Random.value < 0.1f) ? enabledDebufs[1] : enabledDebufs[0];
+                else if (enabledDebufs.Count > 2)
                 {
-                    selectedIndex = enabledDebufs[0];
-                    Debug.Log("디버프 하나뿐이라 그것만 적용");
-                }
-                else if (enabledDebufs.Count == 2)
-                {
-                    float rand = Random.value;
-                    selectedIndex = (rand < 0.1f) ? enabledDebufs[1] : enabledDebufs[0];
-                    Debug.Log($"2개 중 선택된 디버프: {selectedIndex}");
-                }
-                else
-                {
-                    int secondIndex = enabledDebufs[1];
-                    List<int> rest = new List<int>(enabledDebufs);
+                    int second = enabledDebufs[1];
+                    var rest = new List<int>(enabledDebufs);
                     rest.RemoveAt(1);
-
-                    float rand = Random.value;
-                    if (rand < 0.1f)
-                    {
-                        selectedIndex = secondIndex;
-                        Debug.Log("10% 확률로 두 번째 디버프 선택됨");
-                    }
-                    else
-                    {
-                        int pick = Random.Range(0, rest.Count);
-                        selectedIndex = rest[pick];
-                        Debug.Log($"90% 중 나머지에서 선택된 디버프: {selectedIndex}");
-                    }
+                    selectedIndex = (Random.value < 0.1f) ? second : rest[Random.Range(0, rest.Count)];
                 }
 
                 if (selectedIndex < haveDebuf.Length && selectedIndex < player.haveDebuf.Length)
                 {
                     player.haveDebuf[selectedIndex].Accure += haveDebuf[selectedIndex].Accure;
-                    Debug.Log($"플레이어에게 디버프 {selectedIndex} 적용됨");
+                    Debug.Log($"디버프 {selectedIndex} 적용됨");
                 }
             }
+                    yield return new WaitForSeconds(1f);
         }
-        TurnManager.EnemyAct = false;
-        if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
-        else TurnManager.NextEnemyTurn();
-    }
-    void SpecialAttack()
-    {
-        Debug.Log("적 특별 공격 시작");
-        bool randomAttack = Random.value > 0.5f;
-        if (!randomAttack)
+
+        // 힐
+        int heal = Random.Range(1, 3);
+        HP += heal;
+
+        // 복귀
+        elapsed = 0f;
+        while (elapsed < duration)
         {
-            player.OnDamage(ATK * 2);
-            Debug.Log("적 공격");
+            if (TurnManager.isBattleEnded) yield break;
+            transform.position = Vector3.Lerp(target, origin, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-        else
-        {
-            Debug.Log("적 랜덤 공격");
-            int Damage = Random.Range(1, 4);
-            player.OnDamage(ATK * Damage * 2);
-        }
-        bool canDebuf = Random.value > 0.5f;
-        if (canDebuf)
-        {
-            Debug.Log("적 디버프");
+        transform.position = origin;
 
-            List<int> enabledDebufs = new List<int>();
-            for (int i = 0; i < DebufEnable.Count; i++)
-            {
-                if (DebufEnable[i])
-                    enabledDebufs.Add(i);
-            }
-
-            if (enabledDebufs.Count >= 1)
-            {
-                int selectedIndex = enabledDebufs[0];
-
-                if (enabledDebufs.Count == 1)
-                {
-                    selectedIndex = enabledDebufs[0];
-                    Debug.Log("디버프 하나뿐이라 그것만 적용");
-                }
-                else if (enabledDebufs.Count == 2)
-                {
-                    float rand = Random.value;
-                    selectedIndex = (rand < 0.1f) ? enabledDebufs[1] : enabledDebufs[0];
-                    Debug.Log($"2개 중 선택된 디버프: {selectedIndex}");
-                }
-                else
-                {
-                    int secondIndex = enabledDebufs[1];
-                    List<int> rest = new List<int>(enabledDebufs);
-                    rest.RemoveAt(1);
-
-                    float rand = Random.value;
-                    if (rand < 0.1f)
-                    {
-                        selectedIndex = secondIndex;
-                        Debug.Log("10% 확률로 두 번째 디버프 선택됨");
-                    }
-                    else
-                    {
-                        int pick = Random.Range(0, rest.Count);
-                        selectedIndex = rest[pick];
-                        Debug.Log($"90% 중 나머지에서 선택된 디버프: {selectedIndex}");
-                    }
-                }
-
-                if (selectedIndex < haveDebuf.Length && selectedIndex < player.haveDebuf.Length)
-                {
-                    player.haveDebuf[selectedIndex].Accure += haveDebuf[selectedIndex].Accure;
-                    Debug.Log($"플레이어에게 디버프 {selectedIndex} 적용됨");
-                }
-            }
-        }
-
-        int Heal = Random.Range(1, 3);
-        HP += Heal;
+        yield return new WaitForSeconds(0.3f); // 복귀 후 딜레이
+        cam.ResetZoom(Vector3.zero);
+        yield return new WaitForSeconds(1f);
         TurnManager.EnemyAct = false;
         if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
         else TurnManager.NextEnemyTurn();
     }
 
-    void Support()
+    IEnumerator SupportAnim()
     {
-        Debug.Log("버프");
+        yield return new WaitForSeconds(0.3f); // 시작 전 딜레이
+
+        // Step 1: 시전자에게 줌인
+        originalCamPos = cam.transform.position;
+        cam.ZoomToTarget(transform, cam.zoomedSize);
+        yield return new WaitForSeconds(0.6f); // 살짝 딜레이
+
+        // Step 2: 버프 대상 선택
         int chooseEnemy = Random.Range(0, LeftEnemy.Length);
-        int BuffType = Random.Range(0,3);
-        switch( BuffType )
+        Enemy targetEnemy = LeftEnemy[chooseEnemy];
+
+        // Step 3: 대상에게 카메라 이동
+        cam.ZoomToTarget(targetEnemy.transform, cam.zoomedSize);
+        yield return new WaitForSeconds(0.6f);
+
+        // Step 4: 버프 연출 및 적용
+        Debug.Log($"버프 → {targetEnemy.Name}");
+        int BuffType = Random.Range(0, 3);
+        switch (BuffType)
         {
             case 0:
-                LeftEnemy[chooseEnemy].HP += 3;
-            break;
+                targetEnemy.HP += 3;
+                break;
             case 1:
-                LeftEnemy[chooseEnemy].DEF += 3;
-            break;
+                targetEnemy.DEF += 3;
+                break;
             case 2:
-                LeftEnemy[chooseEnemy].ATK += 3;
-            break;
+                targetEnemy.ATK += 3;
+                break;
         }
+
+        // Step 5: 카메라 줌아웃 및 마무리
+        yield return new WaitForSeconds(0.3f);
+        cam.ResetZoom(Vector3.zero);
+        yield return new WaitForSeconds(1f);
+
         TurnManager.EnemyAct = false;
         if (TurnManager.EnemyTurnLeft == 0) TurnManager.PlayerTrun();
         else TurnManager.NextEnemyTurn();
     }
+
 }
