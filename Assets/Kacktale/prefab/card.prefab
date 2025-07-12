@@ -464,11 +464,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card_Sprite:
-  - {fileID: 21300000, guid: c28d5fcc15ae86a4c9219f5642bc1efb, type: 3}
-  - {fileID: 21300000, guid: 28999ef7030be8e4589e3b6fa5e8c90d, type: 3}
-  - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
-  - {fileID: 21300000, guid: 63579d52b83d65e43896d6225a61a504, type: 3}
-  - {fileID: 21300000, guid: 15b97b09a75386e43a8b35a4bf0d7f92, type: 3}
+  - Card_Sprite_s:
+    - {fileID: 21300000, guid: 1ca1d0ed07203214fa8f1b8a268ca176, type: 3}
+    - {fileID: 21300000, guid: 3bfedd2293f22644cb27be1f1a95802e, type: 3}
+    - {fileID: 21300000, guid: 929b6c8ee6b46444694bfb98e920edd4, type: 3}
+    - {fileID: 21300000, guid: c28d5fcc15ae86a4c9219f5642bc1efb, type: 3}
+    - {fileID: 21300000, guid: 395a37dc917ad1f4982aeaf9fdb599a8, type: 3}
+  - Card_Sprite_s:
+    - {fileID: 21300000, guid: 0f6cfe93b4ddc174d897ab3a20cd84f5, type: 3}
+    - {fileID: 21300000, guid: d271b365793799a4e901e07d5cf9dea6, type: 3}
+    - {fileID: 21300000, guid: 8cb55abe28f98104994c57b292fcc0f2, type: 3}
+  - Card_Sprite_s:
+    - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
+    - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
+    - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
+  - Card_Sprite_s:
+    - {fileID: 21300000, guid: 63579d52b83d65e43896d6225a61a504, type: 3}
+    - {fileID: 21300000, guid: 7492e2fa908fb1946b5f5e4701992879, type: 3}
+  - Card_Sprite_s:
+    - {fileID: 21300000, guid: 1c097fa6d24c4714a9e7af86006bfd2f, type: 3}
+    - {fileID: 21300000, guid: 1c097fa6d24c4714a9e7af86006bfd2f, type: 3}
+    - {fileID: 21300000, guid: 1c097fa6d24c4714a9e7af86006bfd2f, type: 3}
+    - {fileID: 21300000, guid: 1c097fa6d24c4714a9e7af86006bfd2f, type: 3}
   rectTransform: {fileID: 1616047257645051390}
   cardType:
     Name: 
@@ -490,6 +507,8 @@ MonoBehaviour:
   CardNum: 0
   turnManager: {fileID: 0}
   Clicked: 0
+  ChooseCardAudio: {fileID: 0}
+  SelectCardAudio: {fileID: 0}
 --- !u!1 &8547950458125149753
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &678192938609097670
 RectTransform:
   m_ObjectHideFlags: 0

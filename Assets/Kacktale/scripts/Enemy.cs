@@ -49,14 +49,11 @@ public class Enemy : MonoBehaviour
     {
         DEFTxt.text = "";
         if (HP > MaxHP) HP = MaxHP;
+
         if (DEF == 0) DEFTxt.text = $"";
         else if (DEF > 0)
         {
             DEFTxt.text = $" + {DEF}";
-        }
-        else
-        {
-            DEFTxt.text = $" {DEF}";
         }
 
         if ((ATK - 1) == 0) ATKTxt.text = $"";
@@ -66,7 +63,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            DEFTxt.text = $" {ATK - 1}";
+            ATKTxt.text = $" {ATK - 1}";
         }
 
         HpTxt.text = HP.ToString();

@@ -142,35 +142,35 @@ public class CardSystem : MonoBehaviour
                 cardComp.cardType = AttackType.haveCards[AttackCardChoose];
                 cardComp.Card_Type_A = 0;
                 cardComp.Card_Type_B = AttackCardChoose;
-                cardComp.Set_Sprite(0, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
+                cardComp.Set_Sprite(0, AttackCardChoose,cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 1:
                 int DefCardChoose = Random.Range(0, DefType.haveCards.Length);
                 cardComp.cardType = DefType.haveCards[DefCardChoose];
                 cardComp.Card_Type_A = 1;
                 cardComp.Card_Type_B = DefCardChoose;
-                cardComp.Set_Sprite(1, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
+                cardComp.Set_Sprite(1, DefCardChoose, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 2:
                 int HealCardChoose = Random.Range(0, HealType.haveCards.Length);
                 cardComp.cardType = HealType.haveCards[HealCardChoose];
                 cardComp.Card_Type_A = 2;
                 cardComp.Card_Type_B = HealCardChoose;
-                cardComp.Set_Sprite(2, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
+                cardComp.Set_Sprite(2, HealCardChoose, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 3:
                 int BuffCardChoose = Random.Range(0, BuffType.haveCards.Length);
                 cardComp.cardType = BuffType.haveCards[BuffCardChoose];
                 cardComp.Card_Type_A = 3;
                 cardComp.Card_Type_B = BuffCardChoose;
-                cardComp.Set_Sprite(3, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
+                cardComp.Set_Sprite(3, BuffCardChoose, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
             case 4:
                 int GatchaCardChoose = Random.Range(0, GatchaType.haveCards.Length);
                 cardComp.cardType = GatchaType.haveCards[GatchaCardChoose];
                 cardComp.Card_Type_A = 4;
                 cardComp.Card_Type_B = GatchaCardChoose;
-                cardComp.Set_Sprite(4, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
+                cardComp.Set_Sprite(4, GatchaCardChoose, cardComp.cardType.Name, cardComp.cardType.Description, cardComp.cardType.cost);
                 break;
         }
     }
@@ -241,27 +241,27 @@ public class CardSystem : MonoBehaviour
                 switch (Cade_Type_B)
                 {
                     case 0:
-                        Target.OnDamage(Type_Card.accureStat + (player.ATK -1));
+                        player.AttackOneEnemy(Target, Type_Card.accureStat + (player.ATK -1));
                         break;
 
                     case 1:
-                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1) + (player.ATK -1));
+                        player.AttackOneEnemy(Target, Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1) + (player.ATK - 1));
                         break;
 
                     case 2:
-                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1) + (player.ATK -1));
+                        player.AttackOneEnemy(Target, Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1) + (player.ATK -1));
                         break;
 
                     case 3:
                         int RanNum = Random.Range(0, 2);
                         if (RanNum == 0)
-                            Target.OnDamage(Type_Card.MinAttack + (player.ATK -1));
+                            player.AttackOneEnemy(Target, Type_Card.MinAttack + (player.ATK - 1));
                         else
-                            Target.OnDamage(Type_Card.MaxAttack + (player.ATK -1));
+                            player.AttackOneEnemy(Target, Type_Card.MaxAttack + (player.ATK - 1));
                         break;
 
                     case 4:
-                        Target.OnDamage(Type_Card.accureStat + (player.ATK -1));
+                        player.AttackOneEnemy(Target, Type_Card.accureStat + (player.ATK -1));
                         break;
                 }
 

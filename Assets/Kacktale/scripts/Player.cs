@@ -76,9 +76,9 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void AttackOneEnemy(float Damage, int selectEnemy)
+    public void AttackOneEnemy(Enemy selectEnemy, float Damage)
     {
-        enemies[selectEnemy].OnDamage(Damage);
+        selectEnemy.OnDamage(Damage);
     }
     public void AttackAllEnemy(float Damage)
     {

@@ -5,9 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 
+[System.Serializable]
+public class LIST__
+{
+    public List<Sprite> Card_Sprite_s = new List<Sprite>();
+}
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] List<Sprite> Card_Sprite = new List<Sprite>();
+    [SerializeField] List<LIST__> Card_Sprite = new List<LIST__>();
     public RectTransform rectTransform;
     private bool isSelected = false;
     public HaveCard cardType;
@@ -16,6 +21,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public LayoutElement layout;
 
     private Image OBJ_IMG;
+
     [SerializeField] private TextMeshProUGUI Name_Txt;
     [SerializeField] private TextMeshProUGUI Description_Txt;
     [SerializeField] private TextMeshProUGUI Cost_Txt;
@@ -39,11 +45,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         cardSystem = FindObjectOfType<CardSystem>();
         OBJ_IMG = GetComponent<Image>();
     }
-    public void Set_Sprite(int _Type, string Name, string Description, int _Cost)
+    public void Set_Sprite(int _Type, int _Type_B, string Name, string Description, int _Cost)
     {
         Type = _Type;
 
-        OBJ_IMG.sprite = Card_Sprite[Type];
+        OBJ_IMG.sprite = Card_Sprite[Type].Card_Sprite_s[_Type_B];
         Name_Txt.text = Name;
         Description_Txt.text = Description;
         Cost_Txt.text = $"{_Cost}";
@@ -133,6 +139,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             OnPointStay();
         }
 
-        
+
     }
 }
