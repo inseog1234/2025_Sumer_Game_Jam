@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public TextMeshProUGUI HpTxt;
     public TextMeshProUGUI NameSpace;
     public TextMeshProUGUI DEFTxt;
+    public TextMeshProUGUI ATKTxt;
     public GameObject Hit;
     public Light HitLight;
 
@@ -50,9 +51,20 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            DEFTxt.text = $" - {DEF}";
+            DEFTxt.text = $" {DEF}";
         }
         
+        if ((ATK-1) == 0) ATKTxt.text = $"";
+        else if ((ATK-1) > 0)
+        {
+            ATKTxt.text = $" + {ATK-1}";
+        }
+        else
+        {
+            DEFTxt.text = $" {ATK-1}";
+        }
+        
+
         HpTxt.text = HP.ToString();
         NameSpace.text = Name;
     }
