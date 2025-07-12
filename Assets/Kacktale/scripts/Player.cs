@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     public GameObject anounceUIObj; // AnounceUI가 있는 GameObject (예: Panel 등)
     public Canvas rootCanvas; // 전체 UI가 포함된 최상위 Canvas
     public TurnManager turnManager;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +50,6 @@ public class Player : MonoBehaviour
         OnDefence(0);
         OnAttack(0);
     }
-
-
     void Update()
     {
         if (cost > Maxcost) cost = Maxcost;
@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
 
     public void OnDamage(float Damage)
     {
+        animator.Play("Hurt");
         if (DEF > 0) DEF -= Damage;
         if (DEF < 0)
         {

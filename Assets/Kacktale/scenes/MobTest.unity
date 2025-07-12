@@ -6976,6 +6976,7 @@ MonoBehaviour:
   anounceUIObj: {fileID: 1060394495}
   rootCanvas: {fileID: 617921234}
   turnManager: {fileID: 2118647073}
+  animator: {fileID: 821746231}
 --- !u!95 &821746231
 Animator:
   serializedVersion: 5

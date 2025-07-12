@@ -114,6 +114,7 @@ public class CardSystem : MonoBehaviour
                     {
                         Target = enemy;
                         Debug.Log("2D Target locked: " + Target.name);
+                        player.animator.Play("Player_PreAttack");
                     }
                     else
                     {
@@ -230,6 +231,7 @@ public class CardSystem : MonoBehaviour
         switch (Cade_Type_A)
         {
             case 0:
+                player.animator.Play("Player_Attack");
                 switch (Cade_Type_B)
                 {
                     case 0:
