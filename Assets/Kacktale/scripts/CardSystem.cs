@@ -256,6 +256,19 @@ public class CardSystem : MonoBehaviour
                         Target.OnDamage(Type_Card.accureStat + (player.ATK -1));
                         break;
                 }
+
+                if (player.haveDebuf[0].Accure > 0)
+                {
+                    if (player.haveDebuf[0].Accure % 2 == 0)
+                    {
+                        
+                    }
+                    else
+                    {
+                        
+                    }
+                    
+                }
                 break;
 
             case 1:
