@@ -6991,9 +6991,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card: []
+  Card_Sc: []
   CardPrefab: {fileID: 6759865821609504248, guid: 2b4ba5413c515bc45b3219dd5142854b, type: 3}
   Canvas: {fileID: 1349428724}
   CanvasGroup: {fileID: 1349428725}
+  isHovered_Index: 0
 --- !u!4 &1236589563
 Transform:
   m_ObjectHideFlags: 0
@@ -7840,6 +7842,8 @@ MonoBehaviour:
   Enemys: {fileID: 11400000, guid: 36a01f465e7a7084ebb4a19b4bad8d1b, type: 2}
   HpTxt: {fileID: 70192548}
   NameSpace: {fileID: 302682804}
+  Hit: {fileID: 1968693900}
+  HitLight: {fileID: 493008232}
 --- !u!1 &1716938129
 GameObject:
   m_ObjectHideFlags: 0
@@ -8037,6 +8041,8 @@ MonoBehaviour:
   Enemys: {fileID: 11400000, guid: 36a01f465e7a7084ebb4a19b4bad8d1b, type: 2}
   HpTxt: {fileID: 1510465270}
   NameSpace: {fileID: 822560607}
+  Hit: {fileID: 84251583}
+  HitLight: {fileID: 1334598466}
 --- !u!1 &1742837965
 GameObject:
   m_ObjectHideFlags: 0
@@ -8274,6 +8280,8 @@ MonoBehaviour:
   Enemys: {fileID: 11400000, guid: 36a01f465e7a7084ebb4a19b4bad8d1b, type: 2}
   HpTxt: {fileID: 789089391}
   NameSpace: {fileID: 1404488102}
+  Hit: {fileID: 1196236618}
+  HitLight: {fileID: 1716938131}
 --- !u!1 &1941163070
 GameObject:
   m_ObjectHideFlags: 0
