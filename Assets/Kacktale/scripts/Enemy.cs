@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     public TextMeshProUGUI HpTxt;
     public TextMeshProUGUI NameSpace;
+    public TextMeshProUGUI DEFTxt;
     public GameObject Hit;
     public Light HitLight;
 
@@ -33,7 +34,9 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(HP > MaxHP) HP = MaxHP;
+        DEFTxt.text = "";
+        if (HP > MaxHP) HP = MaxHP;
+        if (DEF != 0) DEFTxt.text = $" + {DEF}";
         HpTxt.text = HP.ToString();
         NameSpace.text = Name;
     }
@@ -50,6 +53,24 @@ public class Enemy : MonoBehaviour
             HP -= DEF;
             DEF = 0;
         }
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log($"{Name} 사망");
+
+        if (TurnManager.EnemyRemain.Contains(this))
+        {
+            TurnManager.EnemyRemain.Remove(this);
+            TurnManager.EnemyTurnLeft = TurnManager.EnemyRemain.Count;
+        }
+
+        gameObject.SetActive(false); 
     }
 
     IEnumerator HitEffect()

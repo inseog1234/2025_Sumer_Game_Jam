@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TurnManager : MonoBehaviour
     public CardSystem cardSystem;
     public Player player;
 
-    public Enemy[] EnemyRemain;
+    public List<Enemy> EnemyRemain;
     public int EnemyTurnLeft;
     public bool EnemyAct = false;
     // Start is called before the first frame update
@@ -24,7 +25,10 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(EnemyRemain.Count <= 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void PlayerTrun()
@@ -41,8 +45,9 @@ public class TurnManager : MonoBehaviour
     {
         if (IsPlayerTurn)
         {
+            cardSystem.ClearCard();
             IsPlayerTurn = false;
-            EnemyTurnLeft = EnemyRemain.Length;
+            EnemyTurnLeft = EnemyRemain.Count;
             EnemyRemain[EnemyTurnLeft -1].StartTurn();
             EnemyTurnLeft--;
         }
