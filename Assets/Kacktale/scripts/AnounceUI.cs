@@ -21,7 +21,7 @@ public class AnounceUI : MonoBehaviour
     public IEnumerator AnounceAnim()
     {
         Text.text = AnounceName[TextType];
-        if (isPlaying) yield break; // 중복 방지
+        if (isPlaying) yield break;
         isPlaying = true;
 
         float duration = 0.2f;

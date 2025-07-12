@@ -211,6 +211,7 @@ public class Enemy : MonoBehaviour
         player.OnDamage(damage);
         AttackSound.Play();
         Animator.Play("Zombie_Attack");
+        yield return new WaitForSeconds(0.5f);
 
         // 디버프 처리 (생략 가능)
 
@@ -267,6 +268,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("특수 공격 데미지 적용");
         AttackSound.Play();
         Animator.Play("Zombie_Attack");
+        yield return new WaitForSeconds(0.5f);
 
         // 디버프 처리
         if (Random.value > 0.5f)
@@ -327,6 +329,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f); // 시작 전 딜레이
 
+        Animator.Play("Zombie_Support");
         // Step 1: 시전자에게 줌인
         originalCamPos = cam.transform.position;
         cam.ZoomToTarget(transform, cam.zoomedSize);
