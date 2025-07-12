@@ -62,8 +62,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointStay()
     {
         if (!turnManager.IsPlayerTurn) return;
-        rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
-        rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime);
+        
         if (cardSystem.Stop && Clicked)
         {
             rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
@@ -72,7 +71,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         else if (!cardSystem.Stop)
         {
             rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
-            rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime); 
+            rectTransform.position = Vector3.Lerp(rectTransform.position, new Vector3(rectTransform.position.x, 200, rectTransform.position.z), 2 * Time.deltaTime);
         }
 
     }

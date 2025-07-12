@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public Debuf[] haveDebuf;
 
     public TextMeshProUGUI HPText;
+    public TextMeshProUGUI DEFText;
+    public TextMeshProUGUI ATKText;
     public TextMeshProUGUI NameTxt;
     public TextMeshProUGUI CostTxt;
 
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
     {
         NameTxt.text = Name;
         HPText.text = HP.ToString();
+        OnDefence(0);
+        OnAttack(0);
     }
 
 
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour
     }
     public void AttackAllEnemy(float Damage)
     {
-        for(int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].OnDamage(Damage);
         }
@@ -80,14 +84,66 @@ public class Player : MonoBehaviour
             HP -= DEF;
             DEF = 0;
         }
-        else if(DEF == 0)
+        else if (DEF == 0)
         {
             HP -= Damage;
         }
         HPText.text = HP.ToString();
-        if(HP <= 0)
+        if (HP <= 0)
         {
             Time.timeScale = 0;
+        }
+    }
+
+    public void OnDefence(float Defence)
+    {
+        
+        DEF += Defence;
+
+        if (DEF <= 0)
+        {
+            DEFText.text = "";
+        }
+        else
+        {
+            DEFText.text = $"+{DEF}";
+        }
+    }
+    
+    public void OnAttack(float Attack)
+    {
+
+        ATK += Attack;
+
+        if ((ATK - 1) <= 0)
+        {
+            ATKText.text = "";
+        }
+        else
+        {
+            ATKText.text = $"+{ATK - 1}";
+        }
+    }
+
+    public void OnHeal(float Heal)
+    {
+
+        HP += Heal;
+
+        if (HP > MaxHP)
+        {
+            HP = MaxHP;
+            HPText.text = HP.ToString();
+        }
+        else if (HP <= 0)
+        {
+            HP = 0;
+            HPText.text = HP.ToString();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            HPText.text = HP.ToString();
         }
     }
 }

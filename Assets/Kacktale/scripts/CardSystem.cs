@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class CardSystem : MonoBehaviour
 {
-    private int cardNum = 0;
+    [SerializeField] private int cardNum = 0;
 
     public List<GameObject> Card = new List<GameObject>();
     public List<Card> Card_Sc = new List<Card>();
@@ -30,7 +30,7 @@ public class CardSystem : MonoBehaviour
 
     private float MAX_ANGLE = 20f;
 
-    private bool isHovered = false;
+    [SerializeField] private bool isHovered = false;
     public int isHovered_Index;
     private float hoverScale = 1.2f;
     private float normalScale = 1.0f;
@@ -40,7 +40,9 @@ public class CardSystem : MonoBehaviour
 
     private bool SPC_Trans = false;
 
-    public Player player; 
+    public Player player;
+
+    [SerializeField] bool needRefresh;
 
     public bool Stop;
     void Start()
@@ -52,7 +54,7 @@ public class CardSystem : MonoBehaviour
     {
         if (!Stop)
         {
-            bool needRefresh = !isHovered;
+            needRefresh = !isHovered;
 
             for (int i = 0; i < Card.Count; i++)
             {
@@ -222,27 +224,27 @@ public class CardSystem : MonoBehaviour
                 switch (Cade_Type_B)
                 {
                     case 0:
-                        Target.HP -= Type_Card.accureStat;
+                        Target.OnDamage(Type_Card.accureStat);
                         break;
 
                     case 1:
-                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
+                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1));
                         break;
 
                     case 2:
-                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
+                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1));
                         break;
 
                     case 3:
                         int RanNum = Random.Range(0, 2);
                         if (RanNum == 0)
-                            Target.HP -= Type_Card.MinAttack;
+                            Target.OnDamage(Type_Card.MinAttack);
                         else
-                            Target.HP -= Type_Card.MaxAttack;
+                            Target.OnDamage(Type_Card.MaxAttack);
                         break;
 
                     case 4:
-                        Target.HP -= Type_Card.accureStat;
+                        Target.OnDamage(Type_Card.accureStat);
                         break;
                 }
                 break;
@@ -251,20 +253,20 @@ public class CardSystem : MonoBehaviour
                 switch (Cade_Type_B)
                 {
                     case 0:
-                        player.DEF += Type_Card.accureStat;
+                        player.OnDefence(Type_Card.accureStat);
                         TurnManager.PlusCost += 1;
                         break;
 
                     case 1:
                         int RanNum = Random.Range(0, 2);
                         if (RanNum == 0)
-                            player.DEF += Type_Card.MinAttack;
+                            player.OnDefence(Type_Card.MinAttack);
                         else
-                            player.DEF += Type_Card.MaxAttack;
+                            player.OnDefence(Type_Card.MaxAttack);
                         break;
 
                     case 2:
-                        player.DEF += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
+                        player.OnDefence(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1));
                         break;
                 }
                 break;
@@ -273,20 +275,20 @@ public class CardSystem : MonoBehaviour
                 switch (Cade_Type_B)
                 {
                     case 0:
-                        player.HP += Type_Card.accureStat;
+                        player.OnHeal(Type_Card.accureStat);
                         TurnManager.PlusCost += 1;
                         break;
 
                     case 1:
-                        player.HP += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1);
+                        player.OnHeal(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1));
                         break;
 
                     case 2:
                         int RanNum = Random.Range(0, 2);
                         if (RanNum == 0)
-                            player.HP += Type_Card.MinAttack;
+                            player.OnHeal(Type_Card.MinAttack);
                         else
-                            player.HP += Type_Card.MaxAttack;
+                            player.OnHeal(Type_Card.MaxAttack);
                         break;
                 }
                 break;
@@ -295,15 +297,15 @@ public class CardSystem : MonoBehaviour
                 switch (Cade_Type_B)
                 {
                     case 0:
-                        player.ATK += Type_Card.accureStat;
+                        player.OnAttack(Type_Card.accureStat);
                         break;
 
                     case 1:
                         int RanNum = Random.Range(0, 2);
                         if (RanNum == 0)
-                            player.ATK += Type_Card.MinAttack;
+                            player.OnAttack(Type_Card.MinAttack);
                         else
-                            player.ATK += Type_Card.MaxAttack;
+                            player.OnAttack(Type_Card.MaxAttack);
                         break;
                 }
                 break;
@@ -368,6 +370,7 @@ public class CardSystem : MonoBehaviour
         {
             Destroy(Card[0], 0.001f);
             Card.RemoveAt(0);
+            Card_Sc.RemoveAt(0);
         }
 
         return Count;
