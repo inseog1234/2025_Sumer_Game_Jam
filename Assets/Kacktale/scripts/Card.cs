@@ -54,6 +54,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         rectTransform.anchoredPosition3D = new Vector3(960, 330);
         rectTransform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+        rectTransform.rotation = Quaternion.Euler(0, 0, 0);
         isSelected = true;
         yield return new WaitForSeconds(1.3f);
         cardSystem.Card.Remove(gameObject);

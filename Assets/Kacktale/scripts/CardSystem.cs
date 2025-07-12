@@ -99,6 +99,7 @@ public class CardSystem : MonoBehaviour
 
     public void CreateCard()
     {
+        isHovered = false;
         GameObject newCard = Instantiate(CardPrefab, transform.position, Quaternion.identity, Canvas.transform);
         Card.Add(newCard);
         Card card_ = newCard.GetComponent<Card>();
