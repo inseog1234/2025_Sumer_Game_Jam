@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: Mobs
   m_EditorClassIdentifier: Assembly-CSharp::Mobs
   mob:
-  - Name: "\uC880BE"
-    HP: 10
-    MaxHP: 10
-    ATK: 1
+  - Name: "\uC880BIE"
+    HP: 20
+    MaxHP: 20
+    ATK: 0
     DEF: 0
-  - Name: "\uC880BE"
-    HP: 10
-    MaxHP: 10
-    ATK: 1
+    NextAct: 0
+  - Name: "\uC880BIE"
+    HP: 20
+    MaxHP: 20
+    ATK: 0
     DEF: 0
-  - Name: "\uC880BE"
-    HP: 10
-    MaxHP: 10
-    ATK: 1
+    NextAct: 0
+  - Name: "\uC880BIE"
+    HP: 20
+    MaxHP: 20
+    ATK: 0
     DEF: 0
+    NextAct: 0
