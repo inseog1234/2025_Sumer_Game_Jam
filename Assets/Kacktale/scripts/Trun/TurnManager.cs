@@ -16,6 +16,11 @@ public class TurnManager : MonoBehaviour
     public List<Enemy> EnemyRemain;
     public int EnemyTurnLeft;
     public bool EnemyAct = false;
+
+    public AnounceUI AnounceUI;
+
+    public bool isBattleEnded = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +38,8 @@ public class TurnManager : MonoBehaviour
 
     public void PlayerTrun()
     {
+        AnounceUI.TextType = 0;
+        StartCoroutine(AnounceUI.AnounceAnim());
         IsPlayerTurn = true;
         player.cost += giveCost + PlusCost;
         PlusCost = 0;
@@ -46,16 +53,26 @@ public class TurnManager : MonoBehaviour
         if (IsPlayerTurn)
         {
             cardSystem.ClearCard();
+
+            AnounceUI.TextType = 1;
+            StartCoroutine(AnounceUI.AnounceAnim());
+
             IsPlayerTurn = false;
             EnemyTurnLeft = EnemyRemain.Count;
             EnemyRemain[EnemyTurnLeft -1].StartTurn();
             EnemyTurnLeft--;
+
         }
     }
     public void NextEnemyTurn()
     {
         EnemyAct = true;
+
+        AnounceUI.TextType = 1;
+        StartCoroutine(AnounceUI.AnounceAnim());
+
         EnemyRemain[EnemyTurnLeft -1].StartTurn();
         EnemyTurnLeft--;
+
     }
 }

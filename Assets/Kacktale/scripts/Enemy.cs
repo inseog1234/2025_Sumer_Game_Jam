@@ -158,6 +158,7 @@ public class Enemy : MonoBehaviour
 
         while (elapsed < duration)
         {
+            if (TurnManager.isBattleEnded) yield break;
             transform.position = Vector3.Lerp(origin, target, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
@@ -177,6 +178,7 @@ public class Enemy : MonoBehaviour
         elapsed = 0f;
         while (elapsed < duration)
         {
+            if (TurnManager.isBattleEnded) yield break;
             transform.position = Vector3.Lerp(target, origin, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
@@ -209,6 +211,7 @@ public class Enemy : MonoBehaviour
 
         while (elapsed < duration)
         {
+            if (TurnManager.isBattleEnded) yield break;
             transform.position = Vector3.Lerp(origin, target, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
@@ -263,6 +266,7 @@ public class Enemy : MonoBehaviour
         elapsed = 0f;
         while (elapsed < duration)
         {
+            if (TurnManager.isBattleEnded) yield break;
             transform.position = Vector3.Lerp(target, origin, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
