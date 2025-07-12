@@ -36,8 +36,23 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    void bondage()
+    {
+        if (player.haveDebuf[1].Accure > 0)
+        {
+            player.cost -= (int)player.haveDebuf[1].Accure;
+            if (player.cost < 0)
+            {
+                player.cost = 0;
+            }
+            player.haveDebuf[1].Accure = 0;
+        }
+        
+    }
+    
     public void PlayerTrun()
     {
+        bondage();
         AnounceUI.TextType = 0;
         StartCoroutine(AnounceUI.AnounceAnim());
         IsPlayerTurn = true;

@@ -259,15 +259,16 @@ public class CardSystem : MonoBehaviour
 
                 if (player.haveDebuf[0].Accure > 0)
                 {
+                    player.OnDamage(player.haveDebuf[0].Accure);
                     if (player.haveDebuf[0].Accure % 2 == 0)
                     {
-                        
+                        player.haveDebuf[0].Accure /= 2;
                     }
                     else
                     {
-                        
+                        player.haveDebuf[0].Accure -= 1;
+                        player.haveDebuf[0].Accure /= 2;
                     }
-                    
                 }
                 break;
 
@@ -377,7 +378,7 @@ public class CardSystem : MonoBehaviour
                         }
                         else
                         {
-                            player.HP = 0;
+                            player.OnDamage(player.HP + player.DEF);
                         }
                         break;
                 }
