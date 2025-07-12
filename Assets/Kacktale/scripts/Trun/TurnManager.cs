@@ -53,6 +53,9 @@ public class TurnManager : MonoBehaviour
     public void PlayerTrun()
     {
         bondage();
+        for (int i = 0; i < EnemyRemain.Count; i++) {
+            EnemyRemain[i].Set_Next_Act();
+        }
         AnounceUI.TextType = 0;
         StartCoroutine(AnounceUI.AnounceAnim());
         IsPlayerTurn = true;
@@ -75,11 +78,12 @@ public class TurnManager : MonoBehaviour
 
             IsPlayerTurn = false;
             EnemyTurnLeft = EnemyRemain.Count;
-            EnemyRemain[EnemyTurnLeft -1].StartTurn();
+            EnemyRemain[EnemyTurnLeft - 1].StartTurn();
             EnemyTurnLeft--;
 
         }
     }
+    
     public void NextEnemyTurn()
     {
         EnemyAct = true;
@@ -87,7 +91,7 @@ public class TurnManager : MonoBehaviour
         AnounceUI.TextType = 1;
         StartCoroutine(AnounceUI.AnounceAnim());
 
-        EnemyRemain[EnemyTurnLeft -1].StartTurn();
+        EnemyRemain[EnemyTurnLeft - 1].StartTurn();
         EnemyTurnLeft--;
 
     }

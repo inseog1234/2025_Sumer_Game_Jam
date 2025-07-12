@@ -128,13 +128,16 @@ public class Player : MonoBehaviour
 
         ATK += Attack;
 
-        if ((ATK - 1) <= 0)
-        {
+        if ((ATK - 1) == 0) {
             ATKText.text = "";
+        }
+        if ((ATK - 1) > 0)
+        {
+            ATKText.text = $"+{ATK - 1}";
         }
         else
         {
-            ATKText.text = $"+{ATK - 1}";
+            ATKText.text = $"{ATK - 1}";
         }
     }
 

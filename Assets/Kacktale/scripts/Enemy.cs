@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Enemy : MonoBehaviour
@@ -30,6 +31,9 @@ public class Enemy : MonoBehaviour
     public CameraController cam; // 인스펙터에 할당
     private Vector3 originalCamPos;
 
+    public List<Sprite> Act_IconS;
+    public Image Act_Icon;
+
     void Start()
     {
         // OnDamage(1);
@@ -39,7 +43,16 @@ public class Enemy : MonoBehaviour
     {
         DEFTxt.text = "";
         if (HP > MaxHP) HP = MaxHP;
-        if (DEF != 0) DEFTxt.text = $" + {DEF}";
+        if (DEF == 0) DEFTxt.text = $"";
+        else if (DEF > 0)
+        {
+            DEFTxt.text = $" + {DEF}";
+        }
+        else
+        {
+            DEFTxt.text = $" - {DEF}";
+        }
+        
         HpTxt.text = HP.ToString();
         NameSpace.text = Name;
     }
@@ -65,6 +78,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Set_Next_Act()
+    {
+        Act_Icon.sprite = Act_IconS[(int)NextAct];
     }
 
     void Die()
