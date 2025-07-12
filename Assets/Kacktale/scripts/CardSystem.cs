@@ -127,7 +127,7 @@ public class CardSystem : MonoBehaviour
     }
 
     void CardDetail(Card cardComp)
-    { 
+    {
         int a = Random.Range(0, 5);
         switch (a)
         {
@@ -159,7 +159,8 @@ public class CardSystem : MonoBehaviour
         }
     }
 
-    public void Card_Refresh() {
+    public void Card_Refresh()
+    {
         for (int i = 0; i < Card.Count; i++)
         {
             Card[i].transform.SetSiblingIndex(i);
@@ -193,9 +194,28 @@ public class CardSystem : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            float angle = -MAX_ANGLE + angleStep * i;
-            Card[i].transform.rotation = Quaternion.Euler(0, 0, -angle);
+            if (TurnManager.IsPlayerTurn)
+            {
+                float angle = -MAX_ANGLE + angleStep * i;
+                Card[i].transform.rotation = Quaternion.Euler(0, 0, -angle);
+            }
         }
+    }
+
+    public void ClearCard()
+    {
+        int Count = Card.Count;
+        for (int i = 0; i < Count; i++)
+        { 
+            Destroy(Card[0], 0.001f);
+            Card.RemoveAt(0);
+        }
+
+        //foreach (var card in Card)
+        //{
+        //    Card.Remove(card.gameObject);
+        //    Destroy(card.gameObject);
+        //}
     }
 
     public void HoverEnter()
@@ -217,5 +237,5 @@ public class CardSystem : MonoBehaviour
     {
         CanvasGroup.spacing = -1000;
     }
-    
+
 }
