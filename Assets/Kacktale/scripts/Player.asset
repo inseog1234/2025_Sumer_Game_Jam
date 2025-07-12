@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Player
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
+  Name: "\uB9C8\uBC95\uC18C\uB140 \uCE74\uC640\uC774 \uB7EC\uBE14\uB9AC \uC988\uD065\uB3C4\uD065
+    \uBC14\uD065\uBD80\uD065 \uB8E8\uB8E8\uD551"
+  HP: 30
+  MaxHP: 30
+  ATK: 1
+  DEF: 0
+  cost: 10
+  Maxcost: 10
+  haveDebuf:
+  - name: "\uCD9C\uD608"
+    Accure: 0
+  - name: "\uC18D\uBC15"
+    Accure: 0
+  - name: "\uACE8\uC808"
+    Accure: 0
+  - name: "\uC9C4\uD0D5"
+    Accure: 0
