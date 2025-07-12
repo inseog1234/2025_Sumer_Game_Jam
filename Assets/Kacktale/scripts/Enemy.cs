@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
     public CameraController cam; // 인스펙터에 할당
     private Vector3 originalCamPos;
     public AudioSource AttackSound;
+    public AudioSource GainHP;
+    public AudioSource GainDef;
 
     public Animator Animator;
 
@@ -305,6 +307,7 @@ public class Enemy : MonoBehaviour
         // 힐
         int heal = Random.Range(1, 3);
         HP += heal;
+        GainHP.Play();
 
         // 복귀
         elapsed = 0f;
@@ -350,9 +353,11 @@ public class Enemy : MonoBehaviour
         {
             case 0:
                 targetEnemy.HP += 3;
+                GainHP.Play();
                 break;
             case 1:
                 targetEnemy.DEF += 3;
+                GainDef.Play();
                 break;
             case 2:
                 targetEnemy.ATK += 3;
