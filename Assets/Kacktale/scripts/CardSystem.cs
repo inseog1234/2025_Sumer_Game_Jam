@@ -232,6 +232,7 @@ public class CardSystem : MonoBehaviour
         {
             case 0:
                 player.animator.Play("Player_Attack");
+                player.Player_Attack.Play();
                 switch (Cade_Type_B)
                 {
                     case 0:

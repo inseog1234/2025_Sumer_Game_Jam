@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour
 
     public CameraController cam; // 인스펙터에 할당
     private Vector3 originalCamPos;
+    public AudioSource AttackSound;
+
+    public Animator Animator;
 
     void Start()
     {
@@ -47,6 +50,7 @@ public class Enemy : MonoBehaviour
     public void OnDamage(float Damage)
     {
         StartCoroutine(HitEffect());
+        Animator.Play("Zombie_Attack");
 
         if (DEF > 0)
             DEF -= Damage;
@@ -175,6 +179,8 @@ public class Enemy : MonoBehaviour
         bool randomAttack = Random.value > 0.5f;
         float damage = randomAttack ? ATK * Random.Range(1, 4) : ATK;
         player.OnDamage(damage);
+        AttackSound.Play();
+        Animator.Play("Zombie_Attack");
 
         // 디버프 처리 (생략 가능)
 
@@ -229,6 +235,8 @@ public class Enemy : MonoBehaviour
         float damage = randomAttack ? ATK * Random.Range(1, 4) * 2 : ATK * 2;
         player.OnDamage(damage);
         Debug.Log("특수 공격 데미지 적용");
+        AttackSound.Play();
+        Animator.Play("Zombie_Attack");
 
         // 디버프 처리
         if (Random.value > 0.5f)

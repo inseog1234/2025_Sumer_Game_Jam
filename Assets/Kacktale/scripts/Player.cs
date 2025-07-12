@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     public TurnManager turnManager;
 
     public Animator animator;
+
+    public AudioSource Player_Hit;
+    public AudioSource Player_Attack;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +101,7 @@ public class Player : MonoBehaviour
         }
         HPText.text = HP.ToString();
         OnDefence(0);
+        Player_Hit.Play();
         if (HP <= 0)
         {
             StartCoroutine(DieSequence());
@@ -127,7 +131,7 @@ public class Player : MonoBehaviour
     {
 
         ATK += Attack;
-
+        
         if ((ATK - 1) <= 0)
         {
             ATKText.text = "";

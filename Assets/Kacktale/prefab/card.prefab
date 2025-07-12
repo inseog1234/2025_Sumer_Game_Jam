@@ -328,14 +328,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8592559, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7e39ec68f0369bc4b932aad13461be8c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -484,6 +484,8 @@ MonoBehaviour:
   Name_Txt: {fileID: 3335880786779978938}
   Description_Txt: {fileID: 7091046976397444322}
   Cost_Txt: {fileID: 7360650748763963679}
+  Card_Type_A: 0
+  Card_Type_B: 0
   originalSiblingIndex: 0
   CardNum: 0
   turnManager: {fileID: 0}
