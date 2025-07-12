@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class CardSystem : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class CardSystem : MonoBehaviour
     public GameObject CardPrefab;
     public GameObject Canvas;
     public HorizontalLayoutGroup CanvasGroup;
+
+    public CardType AttackType;
+    public CardType DefType;
+    public CardType HealType;
+    public CardType BuffType;
+    public CardType GatchaType;
 
     private float MAX_ANGLE = 20f;
 
@@ -90,6 +97,34 @@ public class CardSystem : MonoBehaviour
         }
     }
 
+    void CardDetail(Card cardComp)
+    { 
+        int a = Random.Range(0, 5);
+        switch (a)
+        {
+            case 0:
+                int AttackCardChoose = Random.Range(0, AttackType.haveCards.Length);
+                cardComp.cardType = AttackType.haveCards[AttackCardChoose];
+                break;
+            case 1:
+                int DefCardChoose = Random.Range(0, DefType.haveCards.Length);
+                cardComp.cardType = DefType.haveCards[DefCardChoose];
+                break;
+            case 2:
+                int HealCardChoose = Random.Range(0, HealType.haveCards.Length);
+                cardComp.cardType = HealType.haveCards[HealCardChoose];
+                break;
+            case 3:
+                int BuffCardChoose = Random.Range(0, BuffType.haveCards.Length);
+                cardComp.cardType = BuffType.haveCards[BuffCardChoose];
+                break;
+            case 4:
+                int GatchaCardChoose = Random.Range(0, GatchaType.haveCards.Length);
+                cardComp.cardType = GatchaType.haveCards[GatchaCardChoose];
+                break;
+        }
+    }
+
     public void Card_Refresh() {
         for (int i = 0; i < Card.Count; i++)
         {
@@ -106,6 +141,7 @@ public class CardSystem : MonoBehaviour
         Card_Sc.Add(card_);
         card_.CardNum = Card.IndexOf(newCard);
         RotateCard();
+        CardDetail(card_);
     }
 
     public void RotateCard()

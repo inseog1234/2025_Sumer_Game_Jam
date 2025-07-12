@@ -7,6 +7,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     public RectTransform rectTransform;
     private bool isSelected = false;
+    public HaveCard cardType;
+    public int Type;
     private CardSystem cardSystem;
     public LayoutElement layout;
 
