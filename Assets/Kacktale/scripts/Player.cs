@@ -57,5 +57,9 @@ public class Player : MonoBehaviour
             HP -= DEF;
             DEF = 0;
         }
+        else if(DEF == 0)
+        {
+            HP -= Damage;
+        }
     }
 }

@@ -170,9 +170,8 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!114 &137880424
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2434865696523091077, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+  m_PrefabInstance: {fileID: 4400679025230141168}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137880421}
   m_Enabled: 1
