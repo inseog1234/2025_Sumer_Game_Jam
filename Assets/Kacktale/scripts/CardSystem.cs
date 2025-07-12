@@ -45,6 +45,9 @@ public class CardSystem : MonoBehaviour
     [SerializeField] bool needRefresh;
 
     public bool Stop;
+
+    public AudioSource ChooseCard;
+    public AudioSource pickUpCard;
     void Start()
     {
         CanvasGroup.spacing = -800f;
@@ -189,6 +192,8 @@ public class CardSystem : MonoBehaviour
         Card_Sc.Add(card_);
         card_.CardNum = Card.IndexOf(newCard);
         card_.turnManager = TurnManager;
+        card_.ChooseCardAudio = ChooseCard;
+        card_.SelectCardAudio = pickUpCard;
         RotateCard();
         CardDetail(card_);
     }

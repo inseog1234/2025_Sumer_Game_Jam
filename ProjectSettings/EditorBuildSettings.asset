@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MintCat/Scenes/Title.unity
+    guid: 8bf8a4a9a9da0304ea3e5b444f0e08f0
+  - enabled: 1
     path: Assets/MintCat/Scenes/Loading.unity
     guid: f81a3e91b760c79469a6ad444d47f9df
   - enabled: 1
     path: Assets/MintCat/Scenes/Stage_Map.unity
     guid: 9e4c6d3304bc3ed4585dc04e33d7531e
   - enabled: 1
-    path: Assets/MintCat/Scenes/Stage_Scene.unity
-    guid: 1e3084563bec8f9459b0480dd6aab230
+    path: Assets/Kacktale/scenes/MobTest.unity
+    guid: 5fde6237f5299784397b3f385d661efa
   m_configObjects: {}

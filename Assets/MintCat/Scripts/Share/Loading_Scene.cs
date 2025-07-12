@@ -10,7 +10,7 @@ public class Loading_Scene : MonoBehaviour
 
     private void Start()
     {
-        nextScene = @"Stage_Scene";
+        nextScene = @"MobTest";
         StartCoroutine(LoadScene());
     }
 

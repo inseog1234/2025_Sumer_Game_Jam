@@ -30,6 +30,9 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public bool Clicked;
 
+    public AudioSource ChooseCardAudio;
+    public AudioSource SelectCardAudio;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -58,6 +61,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         cardSystem.HoverEnter();
         isHovered = true;
+        ChooseCardAudio.Play();
     }
 
     public void OnPointStay()
@@ -105,6 +109,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     IEnumerator SelectCard()
     {
+        SelectCardAudio.Play();
         cardSystem.Stop = true;
         Clicked = true;
         rectTransform.anchoredPosition3D = new Vector3(960, 330);
