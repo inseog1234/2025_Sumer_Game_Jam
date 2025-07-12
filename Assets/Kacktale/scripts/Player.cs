@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
 
     public AudioSource Player_Hit;
     public AudioSource Player_Attack;
+    public AudioSource GainHP;
+    public AudioSource GainDef;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,7 +112,7 @@ public class Player : MonoBehaviour
 
     public void OnDefence(float Defence)
     {
-
+        GainDef.Play();
         DEF += Defence;
 
         if (DEF == 0)
@@ -152,7 +154,7 @@ public class Player : MonoBehaviour
 
     public void OnHeal(float Heal)
     {
-
+        GainHP.Play();
         HP += Heal;
 
         if (HP > MaxHP)
