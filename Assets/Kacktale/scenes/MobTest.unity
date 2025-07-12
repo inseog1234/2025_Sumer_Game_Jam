@@ -5893,11 +5893,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &431580076
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2434865696523091077, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5991113131598364218, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
   m_PrefabInstance: {fileID: 1341126843}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872992736}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84872ed7506c6be4798665205690121b, type: 3}
@@ -7629,75 +7628,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1036084694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8454173223226888005, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1036084696}
-  - component: {fileID: 1036084695}
-  m_Layer: 0
-  m_Name: HealTag
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1036084695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 520583718769520487, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036084694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab07077fd27951e45b20ae4a5c6c0256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  haveCards:
-  - Name: "\uD68C\uBCF5\uC57D"
-    Description: 
-    cardName: 2
-    accureStat: 2
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 0
-  - Name: "\uAD6C\uAE09\uC0C1\uC790"
-    Description: 
-    cardName: 2
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: 0
-    MaxAttack: 3
-    cost: 1
-  - Name: "\uD68C\uBCF5\uD3EC\uC158"
-    Description: 
-    cardName: 2
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: -10
-    MaxAttack: 10
-    cost: 2
---- !u!4 &1036084696
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5711527241600169403, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036084694}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872992737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1041286354
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,76 +8078,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1314817815
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3790439836282325864, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1314817817}
-  - component: {fileID: 1314817816}
-  m_Layer: 0
-  m_Name: DefenceTag
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1314817816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6842703435740751992, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314817815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab07077fd27951e45b20ae4a5c6c0256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  haveCards:
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD53C\uAC00 \uBCF4\uC774\uBA74 \uC548\uB3FC"
-    Description: 
-    cardName: 1
-    accureStat: 2
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 0
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD56D\uC0C1 \uAC11\uC637\uC744 \uCC28\uACE0
-      \uB2E4\uB2C8\uC9C0"
-    Description: 
-    cardName: 1
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: -5
-    MaxAttack: 10
-    cost: 1
-  - Name: "\uC544\uD508\uAC8C \uC2EB\uC5B4\uC11C \uB9C8\uBC95\uC18C\uB140\uAC00 \uB418\uC5B4\uBC84\uB838\uC2B5\uB2C8\uB2E4."
-    Description: 
-    cardName: 1
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: 1
-    MaxAttack: 10
-    cost: 2
---- !u!4 &1314817817
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2801984167478147238, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314817815}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872992737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1334598464
 GameObject:
   m_ObjectHideFlags: 0
@@ -8320,71 +8180,153 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 519290623239335282, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 246734478199092517, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_Name
       value: CardSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 2434865696523091077, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-      propertyPath: Canvas
-      value: 
-      objectReference: {fileID: 1349428724}
-    - target: {fileID: 2434865696523091077, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-      propertyPath: CanvasGroup
-      value: 
-      objectReference: {fileID: 1349428725}
-    - target: {fileID: 2434865696523091077, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-      propertyPath: TurnManager
-      value: 
-      objectReference: {fileID: 2118647073}
-    - target: {fileID: 2434865696523091077, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-      propertyPath: enemyLayer.m_Bits
-      value: 1
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[0].Name
+      value: "\uC815\uC758\uC758 \uC774\uB984\uC73C\uB85C..!!"
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[4].Name
+      value: "\uC545\uC744 \uBA78\uD558\uACA0\uC5B4!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[0].Description
+      value: "2 \uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[1].Description
+      value: "2 ~ 10 \uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[2].Description
+      value: "-1 ~ 15 \uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[3].Description
+      value: "-10 \uB610\uB294 10\uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646941684751088669, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[4].Description
+      value: "9 \uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176464182365189864, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[0].Description
+      value: "50% \uD655\uB960\uB85C 2\uCF54\uC2A4\uD2B8\uB97C \uD68D\uB4DD"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176464182365189864, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[1].Description
+      value: "\uAC00\uC9C4 \uCE74\uB4DC\uB97C \uC804\uBD80 \uAD50\uCCB4 \uBC0F 1\uCF54\uC2A4\uD2B8
+        \uD68D\uB4DD"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176464182365189864, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[2].Description
+      value: "30% \uD655\uB960\uB85C 1\uD134 \uD68D\uB4DD"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176464182365189864, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[3].Description
+      value: "50% \uD655\uB960\uB85C \uD53C \uB450\uBC30 \uD68D\uB4DD \uB610\uB294
+        \uC8FD\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257735475185988265, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[0].Description
+      value: "\uCCB4\uB825\uC744 2 \uD68C\uBCF5 \uD569\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257735475185988265, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[1].Description
+      value: "\uCCB4\uB825\uC744 0 ~ 3 \uD68C\uBCF5 \uD569\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257735475185988265, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[2].Description
+      value: "-10 \uB610\uB294 10 \uD68C\uBCF5 \uD569\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497469360011103057, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[0].Description
+      value: " 2 \uAC11\uC637\uC744 \uBC1B\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497469360011103057, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[1].Description
+      value: "-5 \uB610\uB294 10 \uAC11\uC637\uC744 \uBC1B\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497469360011103057, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[2].Description
+      value: "1 ~ 10 \uAC11\uC637\uC744 \uC5BB\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 964.6
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 12.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.07165551
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2463678773145243946, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+    - target: {fileID: 5896762881628850584, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991113131598364218, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 1349428724}
+    - target: {fileID: 5991113131598364218, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: CanvasGroup
+      value: 
+      objectReference: {fileID: 1349428725}
+    - target: {fileID: 5991113131598364218, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: TurnManager
+      value: 
+      objectReference: {fileID: 2118647073}
+    - target: {fileID: 5991113131598364218, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929712747180864845, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[1].MaxAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929712747180864845, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[0].Description
+      value: "\uACF5\uACA9\uB825\uC774 2 \uC99D\uAC00"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929712747180864845, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
+      propertyPath: haveCards.Array.data[1].Description
+      value: "\uACF5\uACA9\uB825\uC774 -1 \uB610\uB294 1 \uC99D\uAC00"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e874e0aedd5917144908a0d3801ebbfc, type: 3}
 --- !u!1 &1349428724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7416910394765822567, guid: 0f7dbf052387ea540a03024ffa144230, type: 3}
@@ -9054,83 +8996,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00000047683716, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!1 &1681545398
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 921163907806553638, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1681545400}
-  - component: {fileID: 1681545399}
-  m_Layer: 0
-  m_Name: GatchaTag
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1681545399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1108136462680468129, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681545398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab07077fd27951e45b20ae4a5c6c0256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  haveCards:
-  - Name: "\uC804\uBD80 \uC783\uAC70\uB098"
-    Description: 
-    cardName: 4
-    accureStat: 0
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 1
-  - Name: "\uC804\uBD80 \uC5BB\uAC70\uB098"
-    Description: 
-    cardName: 4
-    accureStat: 0
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 1
-  - Name: "\uC804\uBD80 \uB9DD\uD558\uAC70\uB098"
-    Description: 
-    cardName: 4
-    accureStat: 0
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 3
-  - Name: "\uC804\uBD80\uB97C \uAC78\uAC70\uB098"
-    Description: 
-    cardName: 4
-    accureStat: 0
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 0
---- !u!4 &1681545400
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8710670451059986552, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681545398}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872992737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716938129
 GameObject:
   m_ObjectHideFlags: 0
@@ -9970,152 +9835,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2015748107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 419551596297785432, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2015748109}
-  - component: {fileID: 2015748108}
-  m_Layer: 0
-  m_Name: BuffTag
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2015748108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7287284258612886336, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015748107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab07077fd27951e45b20ae4a5c6c0256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  haveCards:
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD55C\uBC29\uC744 \uC911\uC694\uC2DC\uD558\uC9C0"
-    Description: 
-    cardName: 3
-    accureStat: 2
-    IsRandom: 1
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 1
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uB294 \uD55C\uBC29\uC744 \uB178\uB9AC\uC9C0"
-    Description: 
-    cardName: 3
-    accureStat: 2
-    IsRandom: 1
-    MinAttack: -1
-    MaxAttack: 2
-    cost: 1
---- !u!4 &2015748109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8814567972019178020, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015748107}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872992737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2023201154
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8280956431498077750, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2023201156}
-  - component: {fileID: 2023201155}
-  m_Layer: 0
-  m_Name: AttackTag
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2023201155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6846915176989831315, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023201154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab07077fd27951e45b20ae4a5c6c0256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  haveCards:
-  - Name: "\uC815\uC758\uC758 \uC774\uB984\uC73C\uB85C"
-    Description: 
-    cardName: 0
-    accureStat: 2
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 1
-  - Name: "\uB110 \uCC98\uB2E8\uD558\uACA0\uC5B4!"
-    Description: 
-    cardName: 0
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: 2
-    MaxAttack: 10
-    cost: 2
-  - Name: "\uB4E4\uB9AC\uB098? \uC0AC\uB78C\uB4E4\uC758 \uD658\uD638\uC131\uC774?"
-    Description: 
-    cardName: 0
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: -1
-    MaxAttack: 15
-    cost: 3
-  - Name: "\uB9C8\uBC95\uC18C\uB140\uC758 \uBA85\uC131\uC744 \uAC78\uACE0"
-    Description: 
-    cardName: 0
-    accureStat: 0
-    IsRandom: 1
-    MinAttack: -10
-    MaxAttack: 10
-    cost: 3
-  - Name: "\uC545\uC744 \uCC98\uB2E8\uD558\uACA0\uC5B4!"
-    Description: 
-    cardName: 0
-    accureStat: 9
-    IsRandom: 0
-    MinAttack: 0
-    MaxAttack: 0
-    cost: 2
---- !u!4 &2023201156
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8205240495705881259, guid: 8a386a9b22cefe247abdd9bfd4d49ccd, type: 3}
-  m_PrefabInstance: {fileID: 1341126843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023201154}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872992737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118647071
 GameObject:
   m_ObjectHideFlags: 0

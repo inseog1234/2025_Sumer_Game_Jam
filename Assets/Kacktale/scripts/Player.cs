@@ -31,14 +31,14 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI[] DebufText;
 
     public Enemy[] enemies;
-    // Start is called before the first frame update
+
     void Start()
     {
         NameTxt.text = Name;
         HPText.text = HP.ToString();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (cost > Maxcost) cost = Maxcost;

@@ -39,13 +39,13 @@ public class CardSystem : MonoBehaviour
     private float lerpSpeed = 10f;
 
     private bool SPC_Trans = false;
-    
-    
+
+    public Player player; 
+
     public bool Stop;
     void Start()
     {
-        CanvasGroup.spacing = -1000f;
-        
+        CanvasGroup.spacing = -800f;
     }
 
     void Update()
@@ -202,14 +202,156 @@ public class CardSystem : MonoBehaviour
         }
     }
 
-    public void ClearCard()
+    void Card_Stat_Apply(int Cade_Type_A, int Cade_Type_B, HaveCard Type_Card)
+    {
+        switch (Cade_Type_A)
+        {
+            case 0:
+                switch (Cade_Type_B)
+                {
+                    case 0:
+                        Target.HP -= Type_Card.accureStat;
+                        break;
+
+                    case 1:
+                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        break;
+
+                    case 2:
+                        Target.HP -= Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        break;
+
+                    case 3:
+                        int RanNum = Random.Range(0, 2);
+                        if (RanNum == 0) 
+                            Target.HP -= Type_Card.MinAttack;
+                        else 
+                            Target.HP -= Type_Card.MaxAttack;
+                        break;
+
+                    case 4:
+                        Target.HP -= Type_Card.accureStat;
+                        break;
+                }
+                break;
+
+            case 1:
+                switch (Cade_Type_B)
+                {
+                    case 0:
+                        player.DEF += Type_Card.accureStat;
+                        TurnManager.PlusCost += 1;
+                        break;
+
+                    case 1:
+                        int RanNum = Random.Range(0, 2);
+                        if (RanNum == 0) 
+                            player.DEF += Type_Card.MinAttack;
+                        else 
+                            player.DEF += Type_Card.MaxAttack;
+                        break;
+
+                    case 2:
+                        player.DEF += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        break;
+                }
+                break;
+                
+            case 2:
+                switch (Cade_Type_B)
+                {
+                    case 0:
+                        player.HP += Type_Card.accureStat;
+                        TurnManager.PlusCost += 1;
+                        break;
+
+                    case 1:
+                        player.HP += Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack+1);
+                        break;
+
+                    case 2:
+                        int RanNum = Random.Range(0, 2);
+                        if (RanNum == 0) 
+                            player.HP += Type_Card.MinAttack;
+                        else 
+                            player.HP += Type_Card.MaxAttack;
+                        break;
+                }
+                break;
+                
+            case 3:
+                switch (Cade_Type_B)
+                {
+                    case 0:
+                        player.ATK += Type_Card.accureStat;
+                        break;
+
+                    case 1:
+                        int RanNum = Random.Range(0, 2);
+                        if (RanNum == 0) 
+                            player.ATK += Type_Card.MinAttack;
+                        else 
+                            player.ATK += Type_Card.MaxAttack;
+                        break;
+                }
+                break;
+                
+            case 4:
+                switch (Cade_Type_B)
+                {
+                    case 0:
+                        int RanNum = Random.Range(0, 101);
+                        if (RanNum <= 50)
+                            player.cost += 2;
+                        break;
+
+                    case 1:
+                        int Count = ClearCard();
+                        for (int i = 0; i < Count; i++)
+                        {
+                            CreateCard();
+                        }
+                        player.cost += 1;
+                        break;
+
+                    case 2:
+                        RanNum = Random.Range(0, 101);
+                        if (RanNum <= 30)
+                            player.cost += 3;
+                            player.cost += TurnManager.PlusCost;
+
+                            for (int i = 0; i < 5; i++)
+                        {
+                            CreateCard();
+                        }
+                        break;
+
+                    case 3:
+                        RanNum = Random.Range(0, 101);
+                        if (RanNum <= 50) {
+                            player.HP *= 2;
+                            TurnManager.PlusCost += 1;
+                        }
+                        else
+                        {
+                            player.HP = 0;
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+
+    public int ClearCard()
     {
         int Count = Card.Count;
         for (int i = 0; i < Count; i++)
-        { 
+        {
             Destroy(Card[0], 0.001f);
             Card.RemoveAt(0);
         }
+
+        return Count;
 
         //foreach (var card in Card)
         //{
@@ -235,7 +377,7 @@ public class CardSystem : MonoBehaviour
 
     public void UnfoldCard()
     {
-        CanvasGroup.spacing = -1000;
+        CanvasGroup.spacing = -900;
     }
 
 }

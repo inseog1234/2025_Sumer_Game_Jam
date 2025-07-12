@@ -26,8 +26,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public bool Clicked;
 
-    
-
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -89,7 +87,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!turnManager.IsPlayerTurn) return;
-        StartCoroutine(SelectCard());
+
         if (Type == 0 && cardSystem.Target)
         {
             StartCoroutine(SelectCard());
