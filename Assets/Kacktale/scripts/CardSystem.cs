@@ -14,11 +14,11 @@ public class CardSystem : MonoBehaviour
     
     public HorizontalLayoutGroup CanvasGroup;
 
-    public HaveCard AttackType;
-    public HaveCard DefType;
-    public HaveCard HealType;
-    public HaveCard BuffType;
-    public HaveCard GatchaType;
+    public CardType AttackType;
+    public CardType DefType;
+    public CardType HealType;
+    public CardType BuffType;
+    public CardType GatchaType;
 
     // public void RotateCard()
     // {
@@ -60,24 +60,24 @@ public class CardSystem : MonoBehaviour
         switch (a)
         {
             case 0:
-                int AttackCardChoose = Random.Range(0, AttackType.CardType.Length);
-                cardComp.cardType = AttackType.CardType[AttackCardChoose];
+                int AttackCardChoose = Random.Range(0, AttackType.haveCards.Length);
+                cardComp.cardType = AttackType.haveCards[AttackCardChoose];
             break;
             case 1:
-                int DefCardChoose = Random.Range(0, DefType.CardType.Length);
-                cardComp.cardType = DefType.CardType[DefCardChoose];
+                int DefCardChoose = Random.Range(0, DefType.haveCards.Length);
+                cardComp.cardType = DefType.haveCards[DefCardChoose];
             break;
             case 2:
-                int HealCardChoose = Random.Range(0, HealType.CardType.Length);
-                cardComp.cardType = HealType.CardType[HealCardChoose];
+                int HealCardChoose = Random.Range(0, HealType.haveCards.Length);
+                cardComp.cardType = HealType.haveCards[HealCardChoose];
                 break;
             case 3:
-                int BuffCardChoose = Random.Range(0, BuffType.CardType.Length);
-                cardComp.cardType = BuffType.CardType[BuffCardChoose];
+                int BuffCardChoose = Random.Range(0, BuffType.haveCards.Length);
+                cardComp.cardType = BuffType.haveCards[BuffCardChoose];
             break;
             case 4:
-                int GatchaCardChoose = Random.Range(0, GatchaType.CardType.Length);
-                cardComp.cardType= GatchaType.CardType[GatchaCardChoose];
+                int GatchaCardChoose = Random.Range(0, GatchaType.haveCards.Length);
+                cardComp.cardType= GatchaType.haveCards[GatchaCardChoose];
             break;
         }
     }

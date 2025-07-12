@@ -7,7 +7,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
 {
     private bool isSelected = false;
     public RectTransform rectTransform;
-    public CardType cardType;
+    public HaveCard cardType;
     public int Type;
     public void OnPointerEnter(PointerEventData eventData)
     {

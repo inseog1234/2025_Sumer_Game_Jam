@@ -4,7 +4,7 @@ using UnityEngine;
 
 //[CreateAssetMenu(fileName = "CardType", menuName = "Card/Card")]
 [System.Serializable]
-public class CardType
+public class HaveCard
 {
     public string Name;
     public enum card { Attack,Defence,Heal,Buff,Gatcha};
@@ -15,8 +15,7 @@ public class CardType
     public int MaxAttack;
     public int cost;
 }
-[CreateAssetMenu(fileName ="CardTag",menuName = "Card/CardTag")]
-public class HaveCard : ScriptableObject
+public class CardType : MonoBehaviour
 {
-    public CardType[] CardType;
+    public HaveCard[] haveCards;
 }
