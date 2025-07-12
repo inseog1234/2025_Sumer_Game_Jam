@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        OnDamage(1);
+        // OnDamage(1);
     }
 
     void Update()
@@ -50,12 +50,16 @@ public class Enemy : MonoBehaviour
 
         if (DEF > 0)
             DEF -= Damage;
-
-        if (DEF < 0)
+        else if (DEF < 0)
         {
-            HP -= DEF;
+            HP += DEF;
             DEF = 0;
         }
+        else
+        {
+            HP -= Damage;
+        }
+        
 
         if (HP <= 0)
         {

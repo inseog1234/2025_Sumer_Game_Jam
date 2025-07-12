@@ -216,35 +216,44 @@ public class CardSystem : MonoBehaviour
 
     public void Card_Stat_Apply(int Cade_Type_A, int Cade_Type_B, HaveCard Type_Card)
     {
+        if (player.cost - Type_Card.cost > 0)
+        {
+            player.cost -= Type_Card.cost;
+        }
+        else
+        {
+            return;
+        }
+
         Debug.Log($"{Cade_Type_A}, {Cade_Type_B}, {Type_Card}");
-        player.cost -= Type_Card.cost;
+        
         switch (Cade_Type_A)
         {
             case 0:
                 switch (Cade_Type_B)
                 {
                     case 0:
-                        Target.OnDamage(Type_Card.accureStat);
+                        Target.OnDamage(Type_Card.accureStat + (player.ATK -1));
                         break;
 
                     case 1:
-                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1));
+                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1) + (player.ATK -1));
                         break;
 
                     case 2:
-                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1));
+                        Target.OnDamage(Random.Range(Type_Card.MinAttack, Type_Card.MaxAttack + 1) + (player.ATK -1));
                         break;
 
                     case 3:
                         int RanNum = Random.Range(0, 2);
                         if (RanNum == 0)
-                            Target.OnDamage(Type_Card.MinAttack);
+                            Target.OnDamage(Type_Card.MinAttack + (player.ATK -1));
                         else
-                            Target.OnDamage(Type_Card.MaxAttack);
+                            Target.OnDamage(Type_Card.MaxAttack + (player.ATK -1));
                         break;
 
                     case 4:
-                        Target.OnDamage(Type_Card.accureStat);
+                        Target.OnDamage(Type_Card.accureStat + (player.ATK -1));
                         break;
                 }
                 break;
@@ -350,7 +359,7 @@ public class CardSystem : MonoBehaviour
                         RanNum = Random.Range(0, 101);
                         if (RanNum <= 50)
                         {
-                            player.HP *= 2;
+                            player.OnHeal(player.HP);
                             TurnManager.PlusCost += 1;
                         }
                         else

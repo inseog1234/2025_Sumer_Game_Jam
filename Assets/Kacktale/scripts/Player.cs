@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         if (DEF > 0) DEF -= Damage;
         if (DEF < 0)
         {
-            HP -= DEF;
+            HP += DEF;
             DEF = 0;
         }
         else if (DEF == 0)
@@ -96,24 +96,29 @@ public class Player : MonoBehaviour
             HP -= Damage;
         }
         HPText.text = HP.ToString();
+        OnDefence(0);
         if (HP <= 0)
         {
-            Time.timeScale = 0;
+            StartCoroutine(DieSequence());
         }
     }
 
     public void OnDefence(float Defence)
     {
-        
+
         DEF += Defence;
 
-        if (DEF <= 0)
+        if (DEF == 0)
         {
             DEFText.text = "";
         }
-        else
+        else if (DEF > 0)
         {
             DEFText.text = $"+{DEF}";
+        }
+        else
+        {
+            DEFText.text = $"{DEF}";
         }
     }
     
@@ -154,11 +159,6 @@ public class Player : MonoBehaviour
         }
 
         HPText.text = HP.ToString();
-
-        if (HP <= 0)
-        {
-            StartCoroutine(DieSequence());
-        }
     }
 
     private IEnumerator DieSequence()
