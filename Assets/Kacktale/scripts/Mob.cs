@@ -27,14 +27,6 @@ public class PlayerStat : ScriptableObject
     public Debuf[] haveDebuf;
 }
 
-[System.Serializable]
-public class Debuf
-{
-    public string name;
-    public float Accure;
-}
-
-
 [CreateAssetMenu(fileName ="Mobs",menuName ="Phaze/Mobs",order =1)]
 public class Mobs : ScriptableObject
 {
