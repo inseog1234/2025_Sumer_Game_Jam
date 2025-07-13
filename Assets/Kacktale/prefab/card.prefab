@@ -468,18 +468,18 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 1ca1d0ed07203214fa8f1b8a268ca176, type: 3}
     - {fileID: 21300000, guid: 3bfedd2293f22644cb27be1f1a95802e, type: 3}
     - {fileID: 21300000, guid: 929b6c8ee6b46444694bfb98e920edd4, type: 3}
-    - {fileID: 21300000, guid: c28d5fcc15ae86a4c9219f5642bc1efb, type: 3}
+    - {fileID: 21300000, guid: a61a563e69223b148befaeaea0e34482, type: 3}
     - {fileID: 21300000, guid: 395a37dc917ad1f4982aeaf9fdb599a8, type: 3}
   - Card_Sprite_s:
     - {fileID: 21300000, guid: 0f6cfe93b4ddc174d897ab3a20cd84f5, type: 3}
     - {fileID: 21300000, guid: d271b365793799a4e901e07d5cf9dea6, type: 3}
     - {fileID: 21300000, guid: 8cb55abe28f98104994c57b292fcc0f2, type: 3}
   - Card_Sprite_s:
-    - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
-    - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
-    - {fileID: 21300000, guid: cbee9ebe036948c439c477ac22323699, type: 3}
+    - {fileID: 21300000, guid: 87e71e885c7e4c04baaa2f86017d4643, type: 3}
+    - {fileID: 21300000, guid: 4086807fc2101744c97cab6f707500c1, type: 3}
+    - {fileID: 21300000, guid: 797b424e84a0ec648a2ab4001ba88c2f, type: 3}
   - Card_Sprite_s:
-    - {fileID: 21300000, guid: 63579d52b83d65e43896d6225a61a504, type: 3}
+    - {fileID: 21300000, guid: c70473cfca9759942b8c883325208662, type: 3}
     - {fileID: 21300000, guid: 7492e2fa908fb1946b5f5e4701992879, type: 3}
   - Card_Sprite_s:
     - {fileID: 21300000, guid: 1c097fa6d24c4714a9e7af86006bfd2f, type: 3}

@@ -18,6 +18,8 @@ public class Title : MonoBehaviour
     public bool AAAA = false;
     public bool AAAAA = false;
 
+    public GameObject settingPanel;
+
     void Air_Lojic()
     {
         Timer_ += Time.deltaTime;
@@ -68,6 +70,10 @@ public class Title : MonoBehaviour
     void Update()
     {
         Air_Lojic();
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            settingPanel.SetActive(false);
+        }
     }
 
     public void Map_Start()
@@ -77,11 +83,11 @@ public class Title : MonoBehaviour
 
     public void Settings()
     {
-
+        settingPanel.SetActive(true);
     }
 
     public void _Quit()
     {
-
+        Application.Quit();
     }
 }
