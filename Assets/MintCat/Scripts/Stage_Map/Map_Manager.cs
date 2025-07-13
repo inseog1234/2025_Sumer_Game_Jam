@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Map_Manager : MonoBehaviour
 {
