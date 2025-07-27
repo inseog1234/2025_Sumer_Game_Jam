@@ -5,7 +5,7 @@ public class Map_Manager : MonoBehaviour
 {
     public List<GameObject> Stages = new List<GameObject>();
     public Stage_Manager stage_Manager;
-    void OnEnable()
+    void Start()
     {
         Stage_Manager.instance.MakeEnemyTurn(Stages);
     }
