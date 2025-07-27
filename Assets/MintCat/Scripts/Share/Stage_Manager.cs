@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class Stage_Manager : MonoBehaviour
 {
+    public static Stage_Manager instance { get; private set; }
     public int Stage_Num;
-    void Start()
+
+    void Awake()
     {
-        var obj = FindObjectsOfType<Stage_Manager>();
-        if (obj.Length == 1)
+        if(instance == null)
         {
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         } 
     }
 
@@ -26,8 +28,8 @@ public class Stage_Manager : MonoBehaviour
         SceneManager.LoadScene("Loading");
     }
 
-    void Update()
+    public void MakeEnemyTurn(List<GameObject> list)
     {
-        
+        list[Stage_Num - 1].SetActive(true);
     }
 }
