@@ -39,6 +39,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public AudioSource ChooseCardAudio;
     public AudioSource SelectCardAudio;
 
+    public AnounceUI AnounceUI;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -107,6 +109,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             StartCoroutine(SelectCard());
         }
+        else if(Type == 0 && cardSystem.Target == null)
+        {
+            AnounceUI.TextType = 4;
+            StartCoroutine(AnounceUI.AnounceAnim());
+        }
         else if (Type != 0)
         {
             StartCoroutine(SelectCard());
@@ -127,6 +134,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         cardSystem.RotateCard();
         Destroy(gameObject, 0.01f);
         cardSystem.Card_Stat_Apply(Card_Type_A, Card_Type_B, cardType);
+        cardSystem.CanvasGroup.enabled = true;
         Clicked = false;
         cardSystem.Stop = false;
     }

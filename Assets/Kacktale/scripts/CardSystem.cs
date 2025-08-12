@@ -8,14 +8,17 @@ using Random = UnityEngine.Random;
 
 public class CardSystem : MonoBehaviour
 {
+    #region 카드 리스트 관련
     [SerializeField] private int cardNum = 0;
 
     public List<GameObject> Card = new List<GameObject>();
     public List<Card> Card_Sc = new List<Card>();
-
+    #endregion
+    #region 타겟관련
     public Enemy Target;
     public LayerMask enemyLayer;
-
+    #endregion
+    #region 상세 카드 관련
     public GameObject CardPrefab;
     public GameObject Canvas;
     public HorizontalLayoutGroup CanvasGroup;
@@ -25,9 +28,11 @@ public class CardSystem : MonoBehaviour
     public CardType HealType;
     public CardType BuffType;
     public CardType GatchaType;
+    #endregion
 
     public TurnManager TurnManager;
 
+    #region 디테일 관련
     private float MAX_ANGLE = 20f;
 
     [SerializeField] private bool isHovered = false;
@@ -40,9 +45,13 @@ public class CardSystem : MonoBehaviour
 
     private bool SPC_Trans = false;
 
-    public Player player;
-
     [SerializeField] bool needRefresh;
+
+    public AnounceUI AnounceUI;
+
+    #endregion
+
+    public Player player;
 
     public bool Stop;
 
@@ -59,37 +68,7 @@ public class CardSystem : MonoBehaviour
         {
             needRefresh = !isHovered;
 
-            for (int i = 0; i < Card.Count; i++)
-            {
-                var card = Card[i];
-                if (!card) continue;
-
-                RectTransform rect = card.GetComponent<RectTransform>();
-                if (rect == null) continue;
-
-                CanvasGroup.enabled = !isHovered;
-
-                float targetScale = isHovered ? hoverScale : normalScale;
-                float targetY = isHovered ? hoverY : normalY;
-
-                rect.localScale = Vector3.Lerp(rect.localScale, Vector3.one * targetScale, Time.deltaTime * lerpSpeed);
-
-                Vector3 pos = rect.anchoredPosition3D;
-
-                if (Card_Sc[i].isHovered)
-                {
-                    card.transform.SetAsLastSibling();
-                    isHovered_Index = i;
-
-                    pos.y = Mathf.Lerp(pos.y, 200, Time.deltaTime * lerpSpeed);
-                }
-                else
-                {
-                    pos.y = Mathf.Lerp(pos.y, targetY, Time.deltaTime * lerpSpeed);
-                }
-
-                rect.anchoredPosition3D = pos;
-            }
+            HoverCard();
 
             if (needRefresh)
             {
@@ -129,6 +108,41 @@ public class CardSystem : MonoBehaviour
                     Debug.Log("No 2D collider hit");
                 }
             }
+        }
+    }
+
+    void HoverCard()
+    {
+        for (int i = 0; i < Card.Count; i++)
+        {
+            var card = Card[i];
+            if (!card) continue;
+
+            RectTransform rect = card.GetComponent<RectTransform>();
+            if (rect == null) continue;
+
+            CanvasGroup.enabled = !isHovered;
+
+            float targetScale = isHovered ? hoverScale : normalScale;
+            float targetY = isHovered ? hoverY : normalY;
+
+            rect.localScale = Vector3.Lerp(rect.localScale, Vector3.one * targetScale, Time.deltaTime * lerpSpeed);
+
+            Vector3 pos = rect.anchoredPosition3D;
+
+            if (Card_Sc[i].isHovered)
+            {
+                card.transform.SetAsLastSibling();
+                isHovered_Index = i;
+
+                pos.y = Mathf.Lerp(pos.y, 200, Time.deltaTime * lerpSpeed);
+            }
+            else
+            {
+                pos.y = Mathf.Lerp(pos.y, targetY, Time.deltaTime * lerpSpeed);
+            }
+
+            rect.anchoredPosition3D = pos;
         }
     }
 
@@ -194,6 +208,7 @@ public class CardSystem : MonoBehaviour
         card_.turnManager = TurnManager;
         card_.ChooseCardAudio = ChooseCard;
         card_.SelectCardAudio = pickUpCard;
+        card_.AnounceUI = AnounceUI;
         RotateCard();
         CardDetail(card_);
     }
@@ -236,6 +251,7 @@ public class CardSystem : MonoBehaviour
         switch (Cade_Type_A)
         {
             case 0:
+                player.isAttack = true;
                 player.animator.Play("Player_Attack");
                 player.Player_Attack.Play();
                 switch (Cade_Type_B)
@@ -278,6 +294,7 @@ public class CardSystem : MonoBehaviour
                         player.haveDebuf[0].Accure /= 2;
                     }
                 }
+                player.isAttack = false;
                 break;
 
             case 1:

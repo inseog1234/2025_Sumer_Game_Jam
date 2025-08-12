@@ -30,10 +30,9 @@ public class AnounceUI : MonoBehaviour
         Vector3 startScale = new Vector3(1f, 0f, 1f);
         Vector3 targetScale = new Vector3(1f, 1f, 1f);
 
-        // 열기 애니메이션
         while (elapsed < duration)
         {
-            if (TurnManager.isBattleEnded) yield break; // 전투 종료 시 중단
+            if (TurnManager.isBattleEnded) yield break;
             float t = elapsed / duration;
             Pannel.localScale = Vector3.Lerp(startScale, targetScale, t);
             elapsed += Time.deltaTime;
@@ -41,10 +40,8 @@ public class AnounceUI : MonoBehaviour
         }
         Pannel.localScale = targetScale;
 
-        // 유지 시간
         yield return new WaitForSeconds(1f);
 
-        // 닫기 애니메이션
         elapsed = 0f;
         while (elapsed < duration)
         {

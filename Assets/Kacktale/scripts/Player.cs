@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     public AudioSource Player_Attack;
     public AudioSource GainHP;
     public AudioSource GainDef;
+
+    public bool isAttack = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,7 +92,7 @@ public class Player : MonoBehaviour
 
     public void OnDamage(float Damage)
     {
-        animator.Play("Hurt");
+        if(!isAttack) animator.Play("Hurt");
         if (DEF > 0) DEF -= Damage;
         if (DEF < 0)
         {
